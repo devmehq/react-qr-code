@@ -54,7 +54,7 @@ type QRProps = {
     src: string;
     height: number;
     width: number;
-    excavate: boolean;
+    excavate?: boolean;
     x?: number;
     y?: number;
   };
@@ -163,7 +163,7 @@ function getImageSettings(
   const y = !imageSettings.y ? cells.length / 2 - h / 2 : imageSettings.y * scale;
 
   let excavation;
-  if (imageSettings.excavate) {
+  if (imageSettings?.excavate) {
     const floorX = Math.floor(x);
     const floorY = Math.floor(y);
     const ceilW = Math.ceil(w + x - floorX);
