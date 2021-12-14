@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <title>QR CODE</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css' />
+  <style>
+    code, samp, kbd {
+      font-family: "Courier New", Courier, monospace, sans-serif;
+      text-align: left;
+      color: #555;
+    }
+
+    pre code {
+      line-height: 1.6em;
+      font-size: 11px;
+    }
+
+    pre {
+      padding: 0.1em 0.5em 0.3em 0.7em;
+      border-left: 11px solid #ccc;
+      margin: 1.7em 0 1.7em 0.3em;
+      overflow: auto;
+      width: 93%;
+    }
+
+    /* target IE7 and IE6 */
+    *:first-child + html pre {
+      padding-bottom: 2em;
+      overflow-y: hidden;
+      overflow: visible;
+      overflow-x: auto;
+    }
+
+    * html pre {
+      padding-bottom: 2em;
+      overflow: visible;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- We will put our React component inside this div. -->
+<div id='root'></div>
+
+<!-- Load React. -->
+<script type='text/javascript'>
+  process = {
+    env: {
+      NODE_ENV: 'development',
+    },
+  }
+</script>
+<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+<script src='https://unpkg.com/react@latest/umd/react.development.js' crossorigin></script>
+<script src='https://unpkg.com/react-dom@latest/umd/react-dom.development.js' crossorigin></script>
+<script src='https://unpkg.com/babel-standalone@latest/babel.min.js'></script>
+<!--<script nomodule src="https://unpkg.com/browser-es-module-loader/dist/babel-browser-build.js"></script>-->
+<!--<script nomodule src="https://unpkg.com/browser-es-module-loader"></script>-->
+<script src='https://unpkg.com/react-router-dom/umd/react-router-dom.js' crossorigin></script>
+<script src='./../dist/bundles/index.umd.js' crossorigin='anonymous'></script>
+<script src='https://unpkg.com/@devmehq/react-qr-code@1.0.0/dist/bundles/index.umd.js' crossorigin='anonymous'></script>
+<!-- Load our React component. -->
+<script type='text/babel' src='app.jsx'></script>
+
+</body>
+</html>

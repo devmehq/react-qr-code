@@ -1,0 +1,134 @@
+{
+  "name": "@devmehq/react-qr-code",
+  "version": "1.0.0",
+  "private": false,
+  "description": "React component to generate QR codes",
+  "keywords": [
+    "react",
+    "react-component",
+    "qrcode"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devme/react-qr-code"
+  },
+  "license": "MIT",
+  "author": "Mohamed Meabed <mo.meabed@gmail.com>",
+  "sideEffects": false,
+  "main": "./bundles/index.umd.js",
+  "module": "./esm5/index.js",
+  "typings": "./types/index.d.ts",
+  "scripts": {
+    "prebuild": "npm run cleanup && npm run verify",
+    "build": "tsc && tsc --target es2018 --outDir dist/esm2015 && rollup -c config/rollup.config.js && rollup -c config/rollup.config.js --environment NODE_ENV:production",
+    "postbuild": "node scripts/copy && npm run size",
+    "cleanup": "shx rm -rf dist",
+    "commit": "git-cz",
+    "docs": "typedoc -p . --theme minimal --target 'es6' --excludeNotExported --excludePrivate --ignoreCompilerErrors --exclude \"**/src/**/__tests__/*.*\" --out docs src/",
+    "format": "prettier \"**/*.{ts,tsx,js,jsx,css,scss,sass,less,md}\"",
+    "format:fix": "npm run format -- --write",
+    "lint": "eslint",
+    "lint:fix": "npm run lint -- --fix",
+    "old-verify": "npm run validate-js && npm run style && npm run test:ci",
+    "prerelease": "npm run build",
+    "release": "standard-version",
+    "postrelease": "node scripts/copy && node scripts/build && npm run release:github && npm run release:npm",
+    "release:github": "git push --no-verify --follow-tags origin master",
+    "release:npm": "npm publish",
+    "release:preflight": "npm pack ./dist --dry-run",
+    "size": "node scripts/file-size ./dist/bundles/index.umd.min.js ./dist/bundles/index.esm.min.js",
+    "style": "npm run format -- --list-different && npm run lint",
+    "style:fix": "npm run format:fix && npm run lint:fix",
+    "test": "jest -c ./config/jest.config.js",
+    "test:ci": "npm t -- --ci",
+    "test:coverage": "npm t -- --coverage",
+    "test:watch": "npm t -- --watch",
+    "validate-js": "tsc -p ./config && tsc -p ./scripts",
+    "verify": "npm run validate-js"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx,css,scss,sass,less,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "npm run lint:fix",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "lodash.isplainobject": "4.0.6",
+    "qr.js": "0.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "15.0.0",
+    "@commitlint/config-conventional": "15.0.0",
+    "@types/eslint": "8.2.1",
+    "@types/jest": "27.0.3",
+    "@types/json5": "2.2.0",
+    "@types/lodash.isplainobject": "4.0.6",
+    "@types/node": "16.11.13",
+    "@types/prettier": "2.4.2",
+    "@types/pretty-bytes": "5.2.0",
+    "@types/prop-types": "15.7.4",
+    "@types/react": "17.0.37",
+    "@types/react-dom": "17.0.11",
+    "@types/rollup-plugin-json": "3.0.3",
+    "@types/rollup-plugin-sourcemaps": "0.5.0",
+    "@types/shelljs": "0.8.9",
+    "@types/standard-version": "7.0.1",
+    "@types/webpack-config-utils": "2.3.1",
+    "@typescript-eslint/eslint-plugin": "5.7.0",
+    "@typescript-eslint/parser": "5.7.0",
+    "brotli-size": "4.0.0",
+    "commitizen": "4.2.4",
+    "cross-var": "1.1.0",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "8.4.1",
+    "eslint-plugin-react": "7.27.1",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "gzip-size": "6.0.0",
+    "husky": "7.0.4",
+    "jest": "27.4.5",
+    "jest-watch-typeahead": "1.0.0",
+    "json5": "2.2.0",
+    "kleur": "4.1.4",
+    "lint-staged": "12.1.2",
+    "prettier": "2.5.1",
+    "pretty-bytes": "5.6.0",
+    "prop-types": "15.7.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "rollup": "2.61.1",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-json": "4.0.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-replace": "2.2.0",
+    "rollup-plugin-sourcemaps": "0.6.3",
+    "rollup-plugin-terser": "7.0.2",
+    "rollup-plugin-uglify": "6.0.4",
+    "shelljs": "0.8.4",
+    "shx": "0.3.3",
+    "standard-version": "9.3.2",
+    "ts-jest": "27.1.1",
+    "tslib": "2.3.1",
+    "typedoc": "0.22.10",
+    "typescript": "4.5.4",
+    "webpack-config-utils": "2.3.1"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
+  },
+  "engines": {
+    "node": ">=8.5",
+    "npm": ">=6.0",
+    "yarn": "^1.0"
+  },
+  "es2015": "./esm2015/index.js"
+}

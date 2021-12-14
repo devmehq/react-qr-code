@@ -1,0 +1,83 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "commonjs": true,
+    "node": true,
+    "mocha": true,
+    "jest": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.6"
+    }
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "globalReturn": true,
+      "generators": false,
+      "objectLiteralDuplicateProperties": false,
+      "experimentalObjectRestSpread": true,
+      "legacyDecorators": true
+    }
+  },
+  "plugins": ["react", "react-hooks", "@typescript-eslint/eslint-plugin"],
+  "globals": {
+    "process": true
+  },
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "max-len": ["error", 240],
+    "no-mixed-operators": "off",
+    "quote-props": ["error", "as-needed"],
+    "no-undef": 1,
+    "no-extra-semi": 1,
+    "no-trailing-spaces": [
+      1,
+      {
+        "skipBlankLines": true
+      }
+    ],
+    "no-unreachable": 1,
+    "prefer-arrow-callback": "error",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ],
+    "strict": "off",
+    "padded-blocks": "off",
+    "comma-dangle": "off",
+    "no-param-reassign": "off",
+    "arrow-body-style": 0,
+    "no-underscore-dangle": "off",
+    "no-else-return": "off",
+    "no-unused-vars": 0,
+    "require-atomic-updates": 0,
+    "dot-notation": "off",
+    "prefer-template": 1,
+    "indent": [
+      "error",
+      2,
+      {
+        "ignoredNodes": ["JSXElement"],
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": ["error", "unix"],
+    "semi": ["error", "always"],
+    "no-console": 0,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2,
+    "react/prop-types": 0
+  }
+}
