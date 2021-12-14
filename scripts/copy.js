@@ -15,7 +15,7 @@ function main() {
   const distPath = resolve(projectRoot, 'dist')
   const distPackageJson = createDistPackageJson(packageJson)
 
-  const cpFiles = ['README.md', 'CHANGELOG.md', 'LICENSE.md', '.npmignore'].map(
+  const cpFiles = ['README.md', 'LICENSE.md', '.npmignore'].map(
     (file) => resolve(projectRoot, file)
   )
 

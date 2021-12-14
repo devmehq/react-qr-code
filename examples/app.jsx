@@ -1,17 +1,18 @@
+const ReactQrCode = window.ReactQrCode.ReactQrCode;
 
 const Home = () => (
-  <React.Fragment>
+  <div>
     <div>
-    <React.ReactQrCode
-      value={"https://google.com"}
-      size={128}
-      bgColor={'#ffffff'}
-      fgColor={'#000000'}
-      renderAs={'canvas'}
-    />
+      <ReactQrCode
+        value={"https://google.com"}
+        size={128}
+        bgColor={'#ffffff'}
+        fgColor={'#000000'}
+        renderAs={'canvas'}
+      />
     </div>
     <div>
-      <React.ReactQrCode
+      <ReactQrCode
         value={"https://github.com"}
         size={128}
         bgColor={'#7da5ad'}
@@ -19,18 +20,24 @@ const Home = () => (
         renderAs={'svg'}
       />
     </div>
-  </React.Fragment>
+    <div>
+      <ReactQrCode
+        value={"https://github.com"}
+        size={128}
+        bgColor={'#cb1212'}
+        fgColor={'#ffffff'}
+        renderAs={'svg'}
+      />
+    </div>
+  </div>
 )
 
 
-class App extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Home/>
-      </React.Fragment>
-    )
-  }
+function App() {
+  console.log(window.ReactQrCode.ReactQrCode)
+  return (
+    <Home/>
+  )
 }
 
 
