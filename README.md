@@ -2,6 +2,14 @@
 
 A React component to generate [QR codes](http://en.wikipedia.org/wiki/QR_code).
 
+[![Build Status](https://github.com/devmehq/react-qr-code/actions/workflows/ci.yml/badge.svg)](https://github.com/devmehq/react-qr-code/actions/workflows/ci.yml)
+[![NPM version](https://img.shields.io/npm/v/@devmehq/react-qr-code.svg)](https://www.npmjs.com/package/@devmehq/react-qr-code)
+[![Downloads](https://img.shields.io/npm/dm/@devmehq/react-qr-code.svg)](https://www.npmjs.com/package/@devmehq/react-qr-code)
+
+<h5 align="center">
+  Maintained, Upgraded and improved version of <a href='https://github.com/zpao/qrcode.react'>qrcode.react</a>, written in typescript, updated and tested to fix multiple issues in the original library
+</h5>
+
 ## Installation
 
 ```npm
