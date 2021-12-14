@@ -67,4 +67,4 @@ React.render(
 <img src="qrcode.png" height="256" width="256">
 
 
-## LICENSE [MIT](LICENSE)
+## LICENSE [MIT](LICENSE.md)
