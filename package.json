@@ -62,7 +62,6 @@
     }
   },
   "dependencies": {
-    "lodash.isplainobject": "4.0.6",
     "qr.js": "0.0.0"
   },
   "devDependencies": {
