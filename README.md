@@ -44,16 +44,16 @@ React.render(
 
 ## Available Props
 
-| prop            | type                         | default value |
-|-----------------|------------------------------|---------------|
-| `value`         | `string`                     |               |
-| `renderAs`      | `string` (`'canvas' 'svg'`)  | `'canvas'`    |
-| `size`          | `number`                     | `128`         |
-| `bgColor`       | `string` (CSS color)         | `"#FFFFFF"`   |
-| `fgColor`       | `string` (CSS color)         | `"#000000"`   |
-| `level`         | `string` (`'L' 'M' 'Q' 'H'`) | `'L'`         |
-| `includeMargin` | `boolean`                    | `false`       |
-| `imageSettings` | `object` (see below)         |               |
+| prop            | type                                                                     | default value |
+|-----------------|--------------------------------------------------------------------------|---------------|
+| `value`         | `string`                                                                 |               |
+| `renderAs`      | `string` (`'canvas' 'svg'`)                                              | `'canvas'`    |
+| `size`          | `number`                                                                 | `128`         |
+| `bgColor`       | `string` (CSS color)                                                     | `"#FFFFFF"`   |
+| `fgColor`       | `string` (CSS color)                                                     | `"#000000"`   |
+| `level`         | `string` (`'L' 'M' 'Q' 'H'`)                                             | `'L'`         |
+| `includeMargin` | `boolean`                                                                | `false`       |
+| `imageSettings` | `object` (see below)                                                     |               |
 
 ### `imageSettings`
 
@@ -74,5 +74,11 @@ React.render(
 
 <img src="qrcode.png" height="256" width="256">
 
+
+## TODO
+- Add Image Ref
+- Add Download / Share QR Code
+- Add Test
+- Add codesande box
 
 ## LICENSE [MIT](LICENSE.md)
