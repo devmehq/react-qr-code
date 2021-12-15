@@ -48,7 +48,7 @@ type QRProps = {
   level?: 'L' | 'M' | 'Q' | 'H';
   bgColor?: string;
   fgColor?: string;
-  includeMargin?: boolean;
+  marginSize?: number;
   style?: Record<string, string>;
   imageSettings?: {
     src: string;
@@ -66,10 +66,8 @@ const DEFAULT_PROPS: QRProps = {
   level: 'L',
   bgColor: '#ffffff',
   fgColor: '#000000',
-  includeMargin: false,
+  marginSize: 0,
 };
-
-const MARGIN_SIZE = 4;
 
 // This is *very* rough estimate of max amount of QRCode allowed to be covered.
 // It is "wrong" in a lot of ways (area is a terrible way to estimate, it
@@ -147,13 +145,13 @@ function getImageSettings(
   const {
     imageSettings,
     size = 128,
-    includeMargin
+    marginSize
   } = {...DEFAULT_PROPS, ...props};
 
   if (!imageSettings) {
     return undefined;
   }
-  const margin = includeMargin ? MARGIN_SIZE : 0;
+  const margin = marginSize || 0;
   const numCells = cells.length + margin * 2;
   const defaultSize = Math.floor(size * DEFAULT_IMG_SCALE);
   const scale = numCells / size;
@@ -198,7 +196,7 @@ function QRCodeCanvas(props: QRProps) {
     bgColor,
     fgColor,
     style,
-    includeMargin,
+    marginSize,
     imageSettings,
     ...otherProps
   } = {
@@ -225,7 +223,7 @@ function QRCodeCanvas(props: QRProps) {
         return;
       }
 
-      const margin = includeMargin ? MARGIN_SIZE : 0;
+      const margin = marginSize || 0;
       const numCells = cells.length + margin * 2;
       const calculatedImageSettings = getImageSettings(props, cells);
 
@@ -303,7 +301,7 @@ function QRCodeSVG(props: QRProps) {
     level,
     bgColor,
     fgColor,
-    includeMargin,
+    marginSize,
     imageSettings,
     ...otherProps
   } = {
@@ -321,7 +319,7 @@ function QRCodeSVG(props: QRProps) {
     return null;
   }
 
-  const margin = includeMargin ? MARGIN_SIZE : 0;
+  const margin = marginSize || 0;
   const numCells = cells.length + margin * 2;
   const calculatedImageSettings = getImageSettings(props, cells);
 

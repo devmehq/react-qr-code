@@ -9,6 +9,8 @@ const Home = () => (
         bgColor={'#ffffff'}
         fgColor={'#000000'}
         renderAs={'canvas'}
+        marginSize={50}
+
       />
     </div>
     <div>
@@ -27,6 +29,7 @@ const Home = () => (
         bgColor={'#cb1212'}
         fgColor={'#ffffff'}
         renderAs={'svg'}
+        marginSize={10}
       />
     </div>
   </div>
