@@ -1,6 +1,6 @@
 # Contributing
 
-First of all, thanks for your interest in contributing to the reactjs-slot-layout! 🎉
+First, thanks for your interest in contributing to the react-qr-code! 🎉
 
 PRs are the preferred way to spike ideas and address issues, if you have time. If you plan on contributing frequently, please feel free to ask to become a maintainer; the more the merrier. 🤙
 
@@ -134,4 +134,4 @@ yarn release:preflight
 
 ## License
 
-By contributing your code to the reactjs-slot-layout GitHub Repository, you agree to license your contribution under the MIT license.
+By contributing your code to the react-qr-code GitHub Repository, you agree to license your contribution under the MIT license.

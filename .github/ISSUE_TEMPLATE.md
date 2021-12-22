@@ -4,7 +4,7 @@
 
 ## Bug report
 
-- reactjs-slot-layout version: _x.x.x_ (<!-- (run `npm list reactjs-slot-layout` from a terminal/cmd prompt): -->)
+- react-qr-code version: _x.x.x_ (<!-- (run `npm list react-qr-code` from a terminal/cmd prompt): -->)
 - Affected browsers (and versions): _IE 10_
 
 ### Current behaviour
