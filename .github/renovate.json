@@ -12,7 +12,7 @@
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
       "automerge": true,
-      "approvals_required": false,
+      "approvals_required": 0,
       "labels": [
         "dependencies"
       ]
