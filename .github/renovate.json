@@ -1,4 +1,7 @@
 {
+  "extends": [
+    "config:base"
+  ],
   "assigneesFromCodeOwners": true,
   "packageRules": [
     {
@@ -12,7 +15,6 @@
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
       "automerge": true,
-      "approvals_required": 0,
       "labels": [
         "dependencies"
       ]
