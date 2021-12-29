@@ -36,7 +36,6 @@ const Home = () => (
 
 
 function App() {
-  console.log(window.ReactQrCode.ReactQrCode)
   return (
     <Home/>
   )

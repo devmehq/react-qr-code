@@ -22,20 +22,14 @@ yarn install @devmehq/react-qr-code
 import React from 'react';
 import { ReactQrCode } from '@devmehq/react-qr-code';
 
-React.render(
-  <ReactQrCode value="http://facebook.github.io/react/" />,
-  mountNode
-);
+<ReactQrCode value="http://facebook.github.io/react/" />
 ```
 
 ```js
 var React = require('react');
 var { ReactQrCode } = require('@devmehq/react-qr-code');
 
-React.render(
-  <ReactQrCode value="http://facebook.github.io/react/" />,
-  mountNode
-);
+<ReactQrCode value="http://facebook.github.io/react/" />
 ```
 
 ## Available Props
