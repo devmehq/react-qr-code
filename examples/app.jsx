@@ -1,19 +1,18 @@
 const ReactQrCode = window.ReactQrCode.ReactQrCode;
 
 const Home = () => (
-  <div>
-    <div>
+  <div style={{display: 'inline-block'}}>
+    <div style={{display: 'inline-block'}}>
       <ReactQrCode
         value={"https://google.com"}
         size={128}
         bgColor={'#ffffff'}
         fgColor={'#000000'}
-        renderAs={'canvas'}
+        renderAs={'svg'}
         marginSize={50}
-
       />
     </div>
-    <div>
+    <div style={{display: 'inline-block'}}>
       <ReactQrCode
         value={"https://github.com"}
         size={128}
@@ -22,7 +21,7 @@ const Home = () => (
         renderAs={'svg'}
       />
     </div>
-    <div>
+    <div style={{display: 'inline-block'}}>
       <ReactQrCode
         value={"https://github.com"}
         size={128}
