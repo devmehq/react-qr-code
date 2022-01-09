@@ -4,7 +4,7 @@ const Home = () => (
   <div style={{display: 'inline-block', padding: '30px'}}>
     <div style={{display: 'inline-block', margin: '10px'}}>
       <ReactQrCode
-        value={"https://google.com"}
+        value={"https://github.com/devmehq/react-qr-code"}
         size={128}
         bgColor={'#ffffff'}
         fgColor={'#000000'}
@@ -14,7 +14,7 @@ const Home = () => (
     </div>
     <div style={{display: 'inline-block', margin: '10px'}}>
       <ReactQrCode
-        value={"https://github.com"}
+        value={"https://github.com/devmehq/react-qr-code"}
         size={128}
         bgColor={'#7da5ad'}
         fgColor={'#ffffff'}
@@ -23,7 +23,7 @@ const Home = () => (
     </div>
     <div style={{display: 'inline-block', margin: '10px'}}>
       <ReactQrCode
-        value={"https://github.com"}
+        value={"https://github.com/devmehq/react-qr-code"}
         size={128}
         bgColor={'#cb1212'}
         fgColor={'#ffffff'}

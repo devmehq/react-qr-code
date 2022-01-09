@@ -1,11 +1,8 @@
-// @ts-ignore
-import ErrorCorrectLevel from 'qr.js/lib/ErrorCorrectLevel'
-// thus, the deep require.
-// @ts-ignore
-import QRCodeImpl from 'qr.js/lib/QRCode'
 import React from 'react'
+import { JsQrCode } from './qr-js/js-qr-code'
+import { qrErrorCorrectLevel } from './qr-js/qr-error-correct-level'
 
-export function QRCodePath({
+function QRCodePath({
   d,
   fill,
   transformX,
@@ -25,7 +22,7 @@ export function QRCodePath({
   )
 }
 
-export function QRCodeSvg({
+function QRCodeSvg({
   children,
   size,
   title,
@@ -45,7 +42,17 @@ export function QRCodeSvg({
   )
 }
 
-type QRProps = {
+export type ReactQrCodeImageProps = {
+  // todo implement
+  src: string
+  height: number
+  width: number
+  excavate?: boolean
+  x?: number
+  y?: number
+}
+
+export type ReactQrCodeProps = {
   value: string
   size?: number
   level?: 'L' | 'M' | 'Q' | 'H'
@@ -54,28 +61,22 @@ type QRProps = {
   marginSize?: number // todo implement
   style?: Record<string, string> // todo implement
   renderAs?: 'svg' | 'canvas' // todo implement
-  imageSettings?: {
-    // todo implement
-    src: string
-    height: number
-    width: number
-    excavate?: boolean
-    x?: number
-    y?: number
-  }
+  images?: ReactQrCodeImageProps[]
 }
 
-export function ReactQrCode(props: QRProps) {
+export function ReactQrCode(props: ReactQrCodeProps) {
   const {
     bgColor = '#ffffff',
     fgColor = '#000000',
     level = 'L',
     size = 256,
     value = 'https://github.com/devmehq/react-qr-code',
+    marginSize = 0,
+    renderAs = 'svg',
     ...rest
   } = props
-  // We'll use type === -1 to force QRCode to automatically pick the best type.
-  const qrcode = new QRCodeImpl(-1, ErrorCorrectLevel[level])
+  // We'll use type === -1 to force JsQrCode to automatically pick the best type.
+  const qrcode = new JsQrCode(-1, qrErrorCorrectLevel[level])
   qrcode.addData(value)
   qrcode.make()
   const cells = qrcode.modules

@@ -6,7 +6,10 @@
   "keywords": [
     "react",
     "react-component",
-    "qrcode"
+    "qrcode",
+    "qr",
+    "code",
+    "generator"
   ],
   "repository": {
     "type": "git",
@@ -61,9 +64,6 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "qr.js": "0.0.0"
-  },
   "devDependencies": {
     "@commitlint/cli": "16.0.1",
     "@commitlint/config-conventional": "16.0.0",
@@ -97,7 +97,7 @@
     "jest-watch-typeahead": "1.0.0",
     "json5": "2.2.0",
     "kleur": "4.1.4",
-    "lint-staged": "12.1.5",
+    "lint-staged": "12.1.7",
     "prettier": "2.5.1",
     "pretty-bytes": "5.6.0",
     "prop-types": "15.8.1",

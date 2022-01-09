@@ -3,7 +3,7 @@
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es5",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "lib": [
       "dom",
       "es2018"

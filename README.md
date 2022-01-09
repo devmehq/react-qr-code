@@ -34,16 +34,16 @@ var { ReactQrCode } = require('@devmehq/react-qr-code');
 
 ## Available Props
 
-| prop            | type                         | default value |
-|-----------------|------------------------------|---------------|
-| `value`         | `string`                     |               |
-| `renderAs`      | `string` (`'canvas' 'svg'`)  | `'canvas'`    |
-| `size`          | `number`                     | `128`         |
-| `bgColor`       | `string` (CSS color)         | `"#FFFFFF"`   |
-| `fgColor`       | `string` (CSS color)         | `"#000000"`   |
-| `level`         | `string` (`'L' 'M' 'Q' 'H'`) | `'L'`         |
-| `marginSize`    | `number`                     | `false`       |
-| `imageSettings` | `object` (see below)         |               |
+| prop         | type                         | default value |
+|--------------|------------------------------|---------------|
+| `value`      | `string`                     |               |
+| `renderAs`   | `string` (`'canvas' 'svg'`)  | `'canvas'`    |
+| `size`       | `number`                     | `128`         |
+| `bgColor`    | `string` (CSS color)         | `"#FFFFFF"`   |
+| `fgColor`    | `string` (CSS color)         | `"#000000"`   |
+| `level`      | `string` (`'L' 'M' 'Q' 'H'`) | `'L'`         |
+| `marginSize` | `number`                     | `false`       |
+| `images`     | `array` (see below)          |               |
 
 ### `imageSettings`
 
@@ -67,6 +67,9 @@ var { ReactQrCode } = require('@devmehq/react-qr-code');
 
 ## TODO
 - Add Image Ref
+- Add Corner Images and Center Image
+- Add Examples to wifi password, 2fa, and other QR codes
+- ADD SSR Rendering Support
 - Add Download / Share QR Code
 - Add Test
 - Add codesandbox
