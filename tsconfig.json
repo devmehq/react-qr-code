@@ -13,7 +13,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "sourceMap": true,
+    "sourceMap": false,
     "stripInternal": true,
     "declaration": true,
     "declarationMap": true,

@@ -63,7 +63,7 @@ const plugins = /** @type {Plugin[]} */ ([
   nodeResolve(),
 
   // Resolve source maps to the original source
-  sourceMaps(),
+  // sourceMaps(),
 
   // properly set process.env.NODE_ENV within `./environment.ts`
   replace({
@@ -102,7 +102,7 @@ const UMDconfig = {
     ),
     format: 'umd',
     name: LIB_NAME,
-    sourcemap: true,
+    sourcemap: false,
     globals: {
       react: 'React',
       'react-dom': 'ReactDOM',
@@ -127,7 +127,7 @@ const FESMconfig = {
         ifProduction()
       ),
       format: 'es',
-      sourcemap: true,
+      sourcemap: false,
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
