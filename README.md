@@ -1,6 +1,6 @@
 # @devmehq/react-qr-code
 
-A React component to generate [QR codes](http://en.wikipedia.org/wiki/QR_code).
+Simple & Advanced React component to generate [QR codes](http://en.wikipedia.org/wiki/QR_code)
 
 [![Build Status](https://github.com/devmehq/react-qr-code/actions/workflows/ci.yml/badge.svg)](https://github.com/devmehq/react-qr-code/actions/workflows/ci.yml)
 [![NPM version](https://img.shields.io/npm/v/@devmehq/react-qr-code.svg)](https://www.npmjs.com/package/@devmehq/react-qr-code)
@@ -62,7 +62,7 @@ var { ReactQrCode } = require('@devmehq/react-qr-code');
 
 **Note:** In order to render QR Codes in `<canvas>` on high density displays, we scale the canvas element to contain an appropriate number of pixels and then use inline styles to scale back down. We will merge any additional styles, with custom `height` and `width` overriding our own values. This allows scaling to percentages *but* if scaling beyond the `size`, you will encounter blurry images. I recommend detecting resizes with something like [react-measure](https://github.com/souporserious/react-measure) to detect and pass the appropriate size when rendering to `<canvas>`.
 
-<img src="./examples/qrcode-demo.png" alt="qrcode-demo">
+<img src="https://github.com/devmehq/react-qr-code/raw/master/examples/qrcode-demo.png" alt="qrcode-demo">
 
 
 ## TODO
