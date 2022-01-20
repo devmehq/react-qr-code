@@ -65,7 +65,7 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "16.0.3",
+    "@commitlint/cli": "16.1.0",
     "@commitlint/config-conventional": "16.0.0",
     "@types/eslint": "8.4.0",
     "@types/jest": "27.4.0",
