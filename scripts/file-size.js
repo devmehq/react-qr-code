@@ -54,7 +54,7 @@ function getFormatedOutput(pkgName, filesOutput) {
  * @param {boolean} raw
  */
 function formatSize(size, filename, type, raw) {
-  const pretty = raw ? `${size} B` : size
+  const pretty = raw ? `${size} B` : size.toString()
   const color = size < 5000 ? 'green' : size > 40000 ? 'red' : 'yellow'
   const MAGIC_INDENTATION = type === 'br' ? 13 : 10
 
