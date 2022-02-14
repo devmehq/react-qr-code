@@ -89,7 +89,6 @@
     "eslint": "8.9.0",
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.3.0",
-    "gzip-size": "7.0.0",
     "husky": "7.0.4",
     "jest": "27.5.1",
     "jest-watch-typeahead": "1.0.0",
