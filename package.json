@@ -108,7 +108,7 @@
     "rollup-plugin-uglify": "6.0.4",
     "shelljs": "0.8.5",
     "shx": "0.3.4",
-    "standard-version": "9.3.2",
+    "standard-version": "9.5.0",
     "ts-jest": "28.0.2",
     "tslib": "2.4.0",
     "typedoc": "0.22.15",
