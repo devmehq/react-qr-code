@@ -1,0 +1,11 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Collapse vendored and generated files on GitHub
+yarn.lock linguist-generated=true
+package-lock.json linguist-generated=true
+
+# Reduce conflicts on markdown files
+*.md merge=union
+yarn.lock merge=union
+package-lock.json merge=union
