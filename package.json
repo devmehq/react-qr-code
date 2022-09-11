@@ -68,7 +68,7 @@
     "@commitlint/cli": "17.1.2",
     "@commitlint/config-conventional": "17.1.0",
     "@types/eslint": "8.4.6",
-    "@types/jest": "29.0.0",
+    "@types/jest": "29.0.1",
     "@types/json5": "2.2.0",
     "@types/lodash.isplainobject": "4.0.7",
     "@types/node": "18.0.0",
