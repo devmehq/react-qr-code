@@ -86,7 +86,7 @@
     "commitizen": "4.2.5",
     "cross-var": "1.1.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.25.0",
+    "eslint": "8.26.0",
     "eslint-plugin-react": "7.31.10",
     "eslint-plugin-react-hooks": "4.6.0",
     "husky": "8.0.1",
