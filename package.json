@@ -80,7 +80,7 @@
     "@types/shelljs": "0.8.11",
     "@types/standard-version": "7.0.1",
     "@types/webpack-config-utils": "2.3.1",
-    "@typescript-eslint/eslint-plugin": "5.41.0",
+    "@typescript-eslint/eslint-plugin": "5.42.0",
     "@typescript-eslint/parser": "5.42.0",
     "brotli-size": "4.0.0",
     "commitizen": "4.2.5",
