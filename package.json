@@ -65,8 +65,8 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "17.1.2",
-    "@commitlint/config-conventional": "17.1.0",
+    "@commitlint/cli": "17.2.0",
+    "@commitlint/config-conventional": "17.2.0",
     "@types/eslint": "8.4.9",
     "@types/jest": "29.2.0",
     "@types/json5": "2.2.0",
