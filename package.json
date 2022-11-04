@@ -67,8 +67,8 @@
   "devDependencies": {
     "@commitlint/cli": "17.2.0",
     "@commitlint/config-conventional": "17.2.0",
-    "@types/eslint": "8.4.9",
-    "@types/jest": "29.2.1",
+    "@types/eslint": "8.4.10",
+    "@types/jest": "29.2.2",
     "@types/json5": "2.2.0",
     "@types/lodash.isplainobject": "4.0.7",
     "@types/node": "18.11.9",
