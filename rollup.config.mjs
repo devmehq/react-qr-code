@@ -10,8 +10,8 @@ export default {
   output: {
     sourcemap: true,
     dir: 'dist',
-    name: 'react-qr-code',
-    format: 'cjs',
+    name: 'ReactQrCode',
+    format: 'umd',
     exports: 'named',
   },
   plugins: [

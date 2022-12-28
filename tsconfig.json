@@ -17,10 +17,11 @@
     "stripInternal": true,
     "declaration": true,
     "declarationMap": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist/esm5",
+    "declarationDir": "./dist",
+    "outDir": "dist",
     "resolveJsonModule": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "rootDir": "./src"
   },
   "include": [
     "./src"
