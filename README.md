@@ -75,6 +75,5 @@ var { ReactQrCode } = require('@devmehq/react-qr-code');
 - ADD SSR Rendering Support
 - Add Download / Share QR Code
 - Add Test
-- Add codesandbox
 
 ## LICENSE [MIT](LICENSE.md)
