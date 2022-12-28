@@ -42,7 +42,7 @@
     "lint-js": "eslint src/**/*.ts",
     "prepublishOnly": "rm -rf dist/* && NODE_ENV=production rollup -c rollup.config.mjs",
     "prettier": "prettier --write '**/*.{ts,tsx,css,scss}'",
-    "test": "jest",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "test-watch": "jest --watch"
   },
   "lint-staged": {
@@ -76,7 +76,7 @@
     "eslint-config-prettier": "8.5.0",
     "jest": "29.3.1",
     "prettier": "2.8.1",
-    "rollup": "3.8.1",
+    "rollup": "3.9.0",
     "rollup-plugin-uglify": "6.0.4",
     "ts-jest": "29.0.3",
     "tslib": "2.4.1",
