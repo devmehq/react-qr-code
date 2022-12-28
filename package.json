@@ -11,43 +11,39 @@
     "code",
     "generator"
   ],
+  "homepage": "https://github.com/devmehq/react-qr-code#readme",
+  "bugs": {
+    "url": "https://github.com/devmehq/react-qr-code/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/devme/react-qr-code"
+    "url": "git+https://github.com/devmehq/react-qr-code.git"
   },
   "license": "MIT",
-  "author": "Mohamed Meabed <mo.meabed@gmail.com>",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
   "sideEffects": false,
   "main": "./bundles/index.umd.js",
   "module": "./esm5/index.js",
   "typings": "./types/index.d.ts",
   "scripts": {
-    "prebuild": "npm run cleanup && npm run verify",
-    "build": "tsc && tsc --target es2018 --outDir dist/esm2015 && rollup -c config/rollup.config.js && rollup -c config/rollup.config.js --environment NODE_ENV:production",
-    "postbuild": "node scripts/copy && npm run size",
-    "cleanup": "shx rm -rf dist",
-    "commit": "git-cz",
-    "docs": "typedoc -p . --theme minimal --target 'es6' --excludeNotExported --excludePrivate --ignoreCompilerErrors --exclude \"**/src/**/__tests__/*.*\" --out docs src/",
-    "format": "prettier \"**/*.{ts,tsx,js,jsx,css,scss,sass,less,md}\"",
-    "format:fix": "npm run format -- --write",
-    "lint": "eslint",
-    "lint:fix": "npm run lint -- --fix",
-    "old-verify": "npm run validate-js && npm run style && npm run test:ci",
-    "prerelease": "npm run build",
-    "release": "standard-version",
-    "postrelease": "node scripts/copy && node scripts/build && npm run release:github && npm run release:npm",
-    "release:github": "git push --no-verify --follow-tags origin master",
-    "release:npm": "npm publish",
-    "release:preflight": "npm pack ./dist --dry-run",
-    "size": "node scripts/file-size ./dist/bundles/index.umd.min.js ./dist/bundles/index.esm.min.js",
-    "style": "npm run format -- --list-different && npm run lint",
-    "style:fix": "npm run format:fix && npm run lint:fix",
-    "test": "jest -c ./config/jest.config.js",
-    "test:ci": "npm t -- --ci",
-    "test:coverage": "npm t -- --coverage",
-    "test:watch": "npm t -- --watch",
-    "validate-js": "tsc -p ./config && tsc -p ./scripts",
-    "verify": "npm run validate-js"
+    "build": "rollup -c rollup.config.mjs",
+    "build:prod": "NODE_ENV=production rollup -c rollup.config.mjs",
+    "lint-js": "eslint src/**/*.ts",
+    "prepublishOnly": "rm -rf dist/* && NODE_ENV=production rollup -c rollup.config.mjs",
+    "prettier": "prettier --write '**/*.{ts,tsx,css,scss}'",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "test-watch": "jest --watch"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx,css,scss,sass,less,md}": [
@@ -65,55 +61,26 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "17.3.0",
-    "@commitlint/config-conventional": "17.3.0",
-    "@types/eslint": "8.4.10",
+    "@ianvs/prettier-plugin-sort-imports": "3.7.1",
+    "@rollup/plugin-commonjs": "24.0.0",
+    "@rollup/plugin-node-resolve": "15.0.1",
+    "@rollup/plugin-replace": "5.0.2",
+    "@rollup/plugin-typescript": "10.0.1",
+    "@types/jasmine": "4.3.1",
     "@types/jest": "29.2.4",
-    "@types/json5": "2.2.0",
-    "@types/lodash.isplainobject": "4.0.7",
-    "@types/node": "18.11.18",
-    "@types/prettier": "2.7.2",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
-    "@types/rollup-plugin-json": "3.0.3",
-    "@types/rollup-plugin-sourcemaps": "0.5.0",
-    "@types/shelljs": "0.8.11",
-    "@types/standard-version": "7.0.1",
-    "@types/webpack-config-utils": "2.3.1",
     "@typescript-eslint/eslint-plugin": "5.47.1",
     "@typescript-eslint/parser": "5.47.1",
-    "brotli-size": "4.0.0",
-    "commitizen": "4.2.6",
-    "cross-var": "1.1.0",
-    "cz-conventional-changelog": "3.3.0",
     "eslint": "8.30.0",
-    "eslint-plugin-react": "7.31.11",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "husky": "8.0.2",
+    "eslint-config-prettier": "8.5.0",
     "jest": "29.3.1",
-    "jest-watch-typeahead": "2.2.1",
-    "json5": "2.2.2",
-    "kleur": "4.1.5",
-    "lint-staged": "13.1.0",
     "prettier": "2.8.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "rollup": "3.8.1",
-    "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-json": "4.0.0",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-replace": "2.2.0",
-    "rollup-plugin-sourcemaps": "0.6.3",
-    "rollup-plugin-terser": "7.0.2",
+    "rollup": "3.9.0",
     "rollup-plugin-uglify": "6.0.4",
-    "shelljs": "0.8.5",
-    "shx": "0.3.4",
-    "standard-version": "9.5.0",
     "ts-jest": "29.0.3",
     "tslib": "2.4.1",
-    "typedoc": "0.23.23",
-    "typescript": "4.9.4",
-    "webpack-config-utils": "2.3.1"
+    "typescript": "4.9.4"
   },
   "peerDependencies": {
     "react": ">=17.0.2",
@@ -123,6 +90,5 @@
     "node": ">=8.5",
     "npm": ">=6.0",
     "yarn": "^1.0"
-  },
-  "es2015": "./esm2015/index.js"
+  }
 }

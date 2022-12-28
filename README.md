@@ -2,9 +2,11 @@
 
 Simple & Advanced React component to generate [QR codes](http://en.wikipedia.org/wiki/QR_code)
 
-[![Build Status](https://github.com/devmehq/react-qr-code/actions/workflows/ci.yml/badge.svg)](https://github.com/devmehq/react-qr-code/actions/workflows/ci.yml)
-[![NPM version](https://img.shields.io/npm/v/@devmehq/react-qr-code.svg)](https://www.npmjs.com/package/@devmehq/react-qr-code)
+
+[![NPM version](https://badgen.net/npm/v/@devmehq/react-qr-code)](https://npm.im/@devmehq/react-qr-code)
+[![Build Status](https://github.com/devmehq/react-qr-code/workflows/CI/badge.svg)](https://github.com/devmehq/react-qr-code/actions)
 [![Downloads](https://img.shields.io/npm/dm/@devmehq/react-qr-code.svg)](https://www.npmjs.com/package/@devmehq/react-qr-code)
+[![UNPKG](https://img.shields.io/badge/UNPKG-OK-179BD7.svg)](https://unpkg.com/browse/@devmehq/react-qr-code@latest/)
 
 ## Installation
 

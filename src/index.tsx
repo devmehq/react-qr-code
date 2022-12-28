@@ -107,3 +107,4 @@ export function ReactQrCode(props: ReactQrCodeProps) {
     </QRCodeSvg>
   )
 }
+export default ReactQrCode

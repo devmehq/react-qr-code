@@ -13,20 +13,15 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "sourceMap": false,
+    "sourceMap": true,
     "stripInternal": true,
     "declaration": true,
     "declarationMap": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist/esm5",
+    "declarationDir": "./dist",
+    "outDir": "dist",
     "resolveJsonModule": true,
     "importHelpers": true,
-    "plugins": [
-      {
-        "name": "typescript-tslint-plugin",
-        "alwaysShowRuleFailuresAsWarnings": false
-      }
-    ]
+    "rootDir": "./src"
   },
   "include": [
     "./src"
