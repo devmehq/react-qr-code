@@ -33,9 +33,11 @@
     }
   ],
   "sideEffects": false,
-  "main": "./bundles/index.umd.js",
-  "module": "./esm5/index.js",
-  "typings": "./types/index.d.ts",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
     "build:prod": "NODE_ENV=production rollup -c rollup.config.mjs",

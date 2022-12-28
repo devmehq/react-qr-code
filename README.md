@@ -8,6 +8,7 @@ Simple & Advanced React component to generate [QR codes](http://en.wikipedia.org
 [![Downloads](https://img.shields.io/npm/dm/@devmehq/react-qr-code.svg)](https://www.npmjs.com/package/@devmehq/react-qr-code)
 [![UNPKG](https://img.shields.io/badge/UNPKG-OK-179BD7.svg)](https://unpkg.com/browse/@devmehq/react-qr-code@latest/)
 
+[![Edit react-qr-code-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-qr-code-demo-ccho5l?fontsize=14&hidenavigation=1&theme=dark)
 ## Installation
 
 ```npm
