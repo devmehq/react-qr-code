@@ -76,7 +76,7 @@
     "rollup-plugin-uglify": "6.0.4",
     "ts-jest": "29.0.5",
     "tslib": "2.5.0",
-    "typescript": "4.9.4"
+    "typescript": "4.9.5"
   },
   "peerDependencies": {
     "react": ">=17.0.2",
