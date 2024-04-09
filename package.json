@@ -61,7 +61,7 @@
     "@rollup/plugin-typescript": "11.1.6",
     "@types/jasmine": "5.1.4",
     "@types/jest": "29.5.12",
-    "@types/react": "18.2.74",
+    "@types/react": "18.2.75",
     "@types/react-dom": "18.2.24",
     "@typescript-eslint/eslint-plugin": "7.6.0",
     "@typescript-eslint/parser": "7.6.0",
