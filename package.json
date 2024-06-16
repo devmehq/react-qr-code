@@ -74,7 +74,7 @@
     "pretty-quick": "4.0.0",
     "rollup": "4.18.0",
     "rollup-plugin-uglify": "6.0.4",
-    "ts-jest": "29.1.4",
+    "ts-jest": "29.1.5",
     "tslib": "2.6.3",
     "typescript": "5.4.5"
   },
