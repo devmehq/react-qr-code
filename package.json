@@ -72,7 +72,7 @@
     "lint-staged": "15.2.11",
     "prettier": "3.4.2",
     "pretty-quick": "4.0.0",
-    "rollup": "4.28.1",
+    "rollup": "4.29.0",
     "rollup-plugin-uglify": "6.0.4",
     "ts-jest": "29.2.5",
     "tslib": "2.8.1",
