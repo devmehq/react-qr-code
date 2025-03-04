@@ -3475,10 +3475,10 @@ pretty-format@^29.7.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-pretty-quick@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-4.1.0.tgz#a37478bc837ace48c05dfb6f80c0ed599cbaf2fd"
-  integrity sha512-5v7Y4pQqEPQYZh3MQEOGvHbRCtAD47wI3nRJWyBCfBVkbONBTIotgAsTD6VWTAAfX1JJgRkYu7l/4C49SbuP+A==
+pretty-quick@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-4.1.1.tgz#8a0c883e4beeb0eddbe7eda50d7b1251d4f72968"
+  integrity sha512-9Ud0l/CspNTmyIdYac9X7Inb3o8fuUsw+1zJFvCGn+at0t1UwUcUdo2RSZ41gcmfLv1fxgWQxWEfItR7CBwugg==
   dependencies:
     find-up "^5.0.0"
     ignore "^7.0.3"
