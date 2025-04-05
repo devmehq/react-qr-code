@@ -65,7 +65,7 @@
     "@types/react-dom": "19.1.1",
     "@typescript-eslint/eslint-plugin": "8.29.0",
     "@typescript-eslint/parser": "8.29.0",
-    "eslint": "9.23.0",
+    "eslint": "9.24.0",
     "eslint-config-prettier": "10.1.1",
     "husky": "9.1.7",
     "jest": "29.7.0",
@@ -76,7 +76,7 @@
     "rollup-plugin-uglify": "6.0.4",
     "ts-jest": "29.3.1",
     "tslib": "2.8.1",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   },
   "peerDependencies": {
     "react": ">=17.0.2",
