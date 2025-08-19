@@ -66,7 +66,6 @@ document.createElement = jest.fn((tagName: string) => {
   }
   return originalCreateElement(tagName)
 }) as any
-
 ;(global as any).ClipboardItem = class ClipboardItem {
   constructor(items: Record<string, Blob>) {
     Object.assign(this, items)

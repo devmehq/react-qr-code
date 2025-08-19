@@ -23,5 +23,5 @@ dist
 package
 
 ## test outputs
-test/svg-detectability/*.svg
-test/svg-detectability/detectability-report.json
+test/e2e/*.svg
+test/e2e/detectability-report.json

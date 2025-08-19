@@ -2,6 +2,11 @@
 
 The most powerful and customizable React component for generating QR codes. Built with TypeScript, offering extensive features including custom shapes, gradients, logos, templates, and more.
 
+<div align="center">
+  <img src="examples/screenshots/advanced-demo.png" alt="Advanced QR Code Examples" width="100%">
+  <p><i>Advanced customization examples showcasing various QR code styles</i></p>
+</div>
+
 [![NPM version](https://badgen.net/npm/v/@devmehq/react-qr-code)](https://npm.im/@devmehq/react-qr-code)
 [![Build Status](https://github.com/devmehq/react-qr-code/workflows/CI/badge.svg)](https://github.com/devmehq/react-qr-code/actions)
 [![Downloads](https://img.shields.io/npm/dm/@devmehq/react-qr-code.svg)](https://www.npmjs.com/package/@devmehq/react-qr-code)
@@ -13,17 +18,17 @@ The most powerful and customizable React component for generating QR codes. Buil
 
 ## ✨ Features
 
-- 🎨 **Custom Shapes** - Square, circle, rounded, diamond, star modules
-- 🌈 **Gradient Support** - Linear and radial gradients for modules and backgrounds
-- 🖼️ **Logo Embedding** - Add logos/images with excavation support
+- 🎨 **100+ Customization Options** - 12+ eye shapes, 18+ body shapes, 12+ background patterns
+- 🌈 **Advanced Gradients** - Linear, radial, conic, and mesh gradients
+- 🖼️ **Logo Embedding** - Add logos/images with smart excavation
 - 📱 **QR Templates** - WiFi, vCard, SMS, Email, Crypto, and more
-- 🎯 **Canvas & SVG** - Both rendering modes supported
-- 💾 **Download & Copy** - Built-in download and clipboard functionality
+- 🎯 **Canvas & SVG** - Dual rendering modes with optimal performance
+- 💾 **Download & Copy** - Built-in export functionality
+- 🎭 **Preset Themes** - 25+ professionally designed themes
 - ♿ **Accessibility** - Full ARIA support and keyboard navigation
-- 🚀 **Performance** - Memoization, lazy loading, and debouncing
-- 📏 **TypeScript** - Full type safety and IntelliSense
-- 🎭 **Animations** - Smooth fade-in animations
-- 🛡️ **Error Handling** - Comprehensive validation and error states
+- 🚀 **Performance** - Memoization, lazy loading, and virtualization
+- 📏 **TypeScript** - Full type safety with strict mode
+- 🔍 **QR Validation** - Built-in decoder and detectability testing
 - 📦 **Tree-Shakable** - Optimized bundle size with ESM support
 
 ## 📦 Installation
@@ -35,6 +40,81 @@ yarn add @devmehq/react-qr-code
 # or
 pnpm add @devmehq/react-qr-code
 ```
+
+## 🎮 Live Demo & Examples
+
+### 🌐 Online Demos
+
+- [**CodeSandbox Playground**](https://codesandbox.io/s/react-qr-code-demo-ccho5l) - Interactive playground
+- [**StackBlitz Demo**](https://stackblitz.com/edit/react-qr-code-demo) - Online editor
+
+### 📂 Local Examples
+
+Clone the repository and run the examples locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/devmehq/react-qr-code.git
+cd react-qr-code
+
+# Install dependencies
+yarn install
+
+# Build the library
+yarn build
+
+# Serve the examples
+cd examples
+npx http-server -o
+# Or use any static server:
+# python3 -m http.server 8080
+# php -S localhost:8080
+```
+
+Then open your browser to view:
+
+- **Main Demo** - `http://localhost:8080/` - Interactive playground with live customization
+- **Advanced Examples** - `http://localhost:8080/advanced-demo.html` - 100+ style variations
+- **Simple Usage** - `http://localhost:8080/simple-usage.html` - Basic implementation examples
+- **API Documentation** - `http://localhost:8080/api-docs.html` - Complete API reference
+- **Detectability Test** - `http://localhost:8080/qr-test.html` - Test QR code scanning
+
+### 📸 Example Gallery
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="examples/screenshots/qr-basic.png" width="150" alt="Basic QR">
+      <br>Basic
+    </td>
+    <td align="center">
+      <img src="examples/screenshots/qr-gradient.png" width="150" alt="Gradient QR">
+      <br>Gradient
+    </td>
+    <td align="center">
+      <img src="examples/screenshots/qr-circle.png" width="150" alt="Circle Modules">
+      <br>Circle
+    </td>
+    <td align="center">
+      <img src="examples/screenshots/qr-diamond.png" width="150" alt="Diamond Modules">
+      <br>Diamond
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="examples/screenshots/qr-rounded.png" width="150" alt="Rounded Modules">
+      <br>Rounded
+    </td>
+    <td align="center">
+      <img src="examples/screenshots/qr-logo.png" width="150" alt="With Logo">
+      <br>Logo
+    </td>
+    <td colspan="2" align="center">
+      <img src="examples/screenshots/main-demo.png" width="320" alt="Interactive Demo">
+      <br>Interactive Customizer
+    </td>
+  </tr>
+</table>
 
 ## 🚀 Quick Start
 
@@ -80,6 +160,44 @@ function App() {
 
 ## 🎨 Advanced Examples
 
+### Using the Advanced Component
+
+```tsx
+import { AdvancedQRCode } from '@devmehq/react-qr-code'
+
+function App() {
+  return (
+    <AdvancedQRCode
+      value="https://github.com/devmehq/react-qr-code"
+      size={256}
+      theme="gradient"
+      eyeShape="rounded"
+      bodyShape="circle"
+      eyeColor="#4F46E5"
+      bodyColor="#7C3AED"
+      backgroundColor="#F3F4F6"
+      enableDownload={true}
+    />
+  )
+}
+```
+
+### Available Preset Themes
+
+```tsx
+<AdvancedQRCode
+  value="https://example.com"
+  theme="ocean" // or: minimal, gradient, neon, sunset, forest, cyberpunk, etc.
+/>
+```
+
+**25+ Built-in Themes:**
+- `minimal`, `gradient`, `ocean`, `sunset`, `forest`
+- `neon`, `cyberpunk`, `retrowave`, `pastel`, `dark`
+- `colorful`, `monochrome`, `gold`, `silver`, `bronze`
+- `rainbow`, `aurora`, `cosmic`, `earth`, `fire`
+- `ice`, `nature`, `elegant`, `playful`, `professional`
+
 ### Custom Shapes and Colors
 
 ```tsx
@@ -102,25 +220,44 @@ function App() {
 />
 ```
 
-### Gradient QR Code
+### Advanced Gradient Options
 
 ```tsx
-<ReactQrCode
+<AdvancedQRCode
   value="https://example.com"
-  qrStyle={{
-    module: {
-      color: {
-        type: 'linear',
-        colors: ['#667EEA', '#764BA2'],
-        angle: 45,
-      },
-    },
-    background: {
-      color: {
-        type: 'radial',
-        colors: ['#F3F4F6', '#E5E7EB'],
-      },
-    },
+  bodyGradient={{
+    type: 'linear',
+    colors: ['#667EEA', '#764BA2'],
+    angle: 45,
+  }}
+  backgroundGradient={{
+    type: 'radial',
+    colors: ['#F3F4F6', '#E5E7EB'],
+    centerX: 0.5,
+    centerY: 0.5,
+    radius: 1,
+  }}
+/>
+
+// Conic gradient
+<AdvancedQRCode
+  value="https://example.com"
+  bodyGradient={{
+    type: 'conic',
+    colors: ['#ff0000', '#00ff00', '#0000ff', '#ff0000'],
+    angle: 0,
+  }}
+/>
+
+// Mesh gradient (advanced)
+<AdvancedQRCode
+  value="https://example.com"
+  bodyGradient={{
+    type: 'mesh',
+    colors: [
+      ['#ff0000', '#00ff00'],
+      ['#0000ff', '#ffff00'],
+    ],
   }}
 />
 ```
@@ -144,7 +281,6 @@ function App() {
 
 ```tsx
 import { ReactQrCode, QRHelpers } from '@devmehq/react-qr-code'
-
 ;<ReactQrCode
   value={QRHelpers.wifi('MyNetwork', 'password123', 'WPA2', false)}
   size={256}
@@ -206,6 +342,23 @@ import { ReactQrCode, QRHelpers } from '@devmehq/react-qr-code'
 />
 ```
 
+### Advanced Shape Customization
+
+```tsx
+<AdvancedQRCode
+  value="https://example.com"
+  // Eye (finder pattern) shapes
+  eyeShape="rounded" // square, circle, rounded, leaf, star, diamond, hexagon, octagon, flower, cat
+  eyeFrameShape="rounded" // square, circle, rounded, dots, lines, zigzag, waves, cross, mesh, gradient
+  
+  // Body (data module) shapes  
+  bodyShape="circle" // square, circle, rounded, diamond, star, hexagon, octagon, triangle, cross, plus, dots, lines, zigzag, waves, noise, circuit, organic, fluid
+  
+  // Background patterns
+  backgroundPattern="dots" // none, dots, lines, grid, mesh, circuit, waves, noise, gradient, radial, hexagon, triangle
+/>
+```
+
 ### Using Ref Methods
 
 ```tsx
@@ -240,6 +393,57 @@ function App() {
       <button onClick={getDataURL}>Get Data URL</button>
     </>
   )
+}
+```
+
+## 🧪 Advanced Customization API
+
+The `AdvancedQRCode` component provides extensive customization:
+
+```tsx
+interface AdvancedQRCodeProps {
+  // Basic
+  value: string
+  size?: number
+  level?: 'L' | 'M' | 'Q' | 'H'
+  
+  // Themes
+  theme?: PresetTheme
+  colorBlindMode?: 'none' | 'protanopia' | 'deuteranopia' | 'tritanopia' | 'achromatopsia'
+  
+  // Shapes
+  eyeShape?: EyeShape
+  eyeFrameShape?: EyeFrameShape
+  bodyShape?: BodyShape
+  
+  // Colors
+  eyeColor?: string | GradientConfig
+  eyeFrameColor?: string | GradientConfig
+  bodyColor?: string | GradientConfig
+  backgroundColor?: string | GradientConfig
+  
+  // Gradients
+  eyeGradient?: GradientConfig
+  bodyGradient?: GradientConfig
+  backgroundGradient?: GradientConfig
+  
+  // Patterns
+  backgroundPattern?: BackgroundPattern
+  
+  // Effects
+  animationType?: 'none' | 'fade' | 'scale' | 'rotate' | 'slide' | 'bounce'
+  glowEffect?: boolean
+  shadowEffect?: boolean
+  
+  // Logo
+  logo?: string
+  logoSize?: number
+  logoExcavate?: boolean
+  
+  // Actions
+  enableDownload?: boolean
+  enableCopy?: boolean
+  downloadFilename?: string
 }
 ```
 
@@ -331,6 +535,47 @@ import type {
 - **Tree-shakable**: Import only what you need
 - **Zero dependencies**: Only React as peer dependency
 
+## 🔧 Development & Testing
+
+### Running Tests
+
+```bash
+# Run unit tests
+yarn test
+
+# Run with coverage
+yarn test:coverage
+
+# Run detectability tests
+node test/e2e-svg-detectability.js
+```
+
+### Building
+
+```bash
+# Development build
+yarn build
+
+# Production build
+yarn build:prod
+
+# Watch mode
+yarn build:watch
+```
+
+### Type Checking & Linting
+
+```bash
+# Type check
+yarn typecheck
+
+# Lint
+yarn lint
+
+# Format code
+yarn prettier
+```
+
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
@@ -371,7 +616,13 @@ Built with ❤️ by the [DEV.ME](https://dev.me) team.
 ---
 
 <div align="center">
-  <img src="https://github.com/devmehq/react-qr-code/raw/master/examples/qrcode-demo.png" alt="QR Code Demo" width="200">
+  <h3>📸 More Examples</h3>
+  <img src="examples/screenshots/simple-usage.png" alt="Simple Usage Examples" width="100%">
+  <p><i>Various implementation examples and use cases</i></p>
+  
+  <br>
+  
+  <img src="examples/qrcode-demo.png" alt="QR Code Demo" width="200">
   
   **Scan to visit our GitHub!**
 </div>

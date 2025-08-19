@@ -17,7 +17,7 @@ const QrScanner = require('qr-scanner')
 
 // Directory paths
 const EXAMPLES_DIR = path.join(__dirname, '..', 'examples')
-const TEST_OUTPUT_DIR = path.join(__dirname, 'svg-detectability')
+const TEST_OUTPUT_DIR = path.join(__dirname, 'e2e')
 
 // HTML files to test
 const HTML_FILES = [

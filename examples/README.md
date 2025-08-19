@@ -1,6 +1,8 @@
 # React QR Code Examples 🎨
 
-This directory contains comprehensive examples showcasing all the features of React QR Code library.
+Comprehensive examples demonstrating all features of @devmehq/react-qr-code.
+
+![Examples Gallery](screenshots/advanced-demo.png)
 
 ## 📁 Files Overview
 
@@ -38,9 +40,27 @@ This directory contains comprehensive examples showcasing all the features of Re
 
 ## 🚀 Quick Start
 
-1. **Clone or download** this repository
-2. **Open any HTML file** in your browser
-3. **No build step required** - examples use CDN links
+### Option 1: View Online
+- [CodeSandbox Playground](https://codesandbox.io/s/react-qr-code-demo-ccho5l)
+- [StackBlitz Demo](https://stackblitz.com/edit/react-qr-code-demo)
+
+### Option 2: Run Locally
+
+```bash
+# From the react-qr-code root directory
+yarn build
+cd examples
+
+# Choose your server:
+npx http-server -o          # npm (recommended)
+python3 -m http.server 8080  # Python
+php -S localhost:8080        # PHP
+```
+
+Then open your browser to:
+- Main Demo: `http://localhost:8080/`
+- Advanced Examples: `http://localhost:8080/advanced-demo.html`
+- API Docs: `http://localhost:8080/api-docs.html`
 
 ## 🌟 Features Demonstrated
 
@@ -131,27 +151,87 @@ This directory contains comprehensive examples showcasing all the features of Re
 />
 ```
 
+## 📸 Screenshots Gallery
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="screenshots/main-demo.png" width="300">
+      <br><b>Interactive Demo</b>
+    </td>
+    <td align="center">
+      <img src="screenshots/simple-usage.png" width="300">
+      <br><b>Simple Usage</b>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="screenshots/qr-test.png" width="300">
+      <br><b>Detectability Test</b>
+    </td>
+    <td align="center">
+      <img src="screenshots/advanced-demo-element.png" width="300">
+      <br><b>Advanced Styles</b>
+    </td>
+  </tr>
+</table>
+
 ## 🔧 Development
 
-To run these examples locally with your own modifications:
+### Live Reload Development
 
-1. Build the library first:
 ```bash
-cd .. && yarn build
+# Terminal 1: Watch and rebuild
+yarn build:watch
+
+# Terminal 2: Serve with live reload
+npx live-server examples
 ```
 
-2. Open any HTML file in your browser
-3. The examples automatically load from `../dist/index.umd.js`
+### Testing QR Detectability
 
-## 🌐 Live Examples
+```bash
+# Run detectability tests
+node test-detectability.js
 
-You can run these examples directly in your browser without any setup. Just clone the repository and open the HTML files!
+# Run E2E tests
+node ../test/e2e-svg-detectability.js
+```
+
+### Mobile Testing
+
+```bash
+# Start server on all interfaces
+http-server examples --host 0.0.0.0
+
+# Access from mobile:
+# http://[YOUR-LOCAL-IP]:8080
+```
+
+## 🧪 Testing & Validation
+
+### QR Code Detectability
+All generated QR codes are tested for:
+- ✅ Minimum 3:1 contrast ratio
+- ✅ Proper error correction
+- ✅ Scanner compatibility
+- ✅ Mobile camera detection
+
+### Supported Scanners
+- iOS Camera (iOS 11+)
+- Android Camera
+- Google Lens
+- QR Scanner apps
+- Web-based scanners
 
 ## 📖 Documentation Links
 
+- [Full Examples Documentation](../EXAMPLES.md)
 - [Main Repository](https://github.com/devmehq/react-qr-code)
 - [NPM Package](https://www.npmjs.com/package/@devmehq/react-qr-code)
+- [API Reference](../README.md#api-reference)
 - [TypeScript Definitions](../src/types/)
+- [Contributing Guide](../CONTRIBUTING.md)
 
 ## 🤝 Contributing
 
