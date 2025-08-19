@@ -58,7 +58,13 @@ export class EyeRenderer {
 
     return (
       <g transform={transform}>
-        {filters.length > 0 && <defs>{filters.map((filter, index) => React.cloneElement(filter, { key: `${id}-filter-${index}` }))}</defs>}
+        {filters.length > 0 && (
+          <defs>
+            {filters.map((filter, index) =>
+              React.cloneElement(filter, { key: `${id}-filter-${index}` })
+            )}
+          </defs>
+        )}
 
         {/* Outer Frame */}
         {this.renderFrame(

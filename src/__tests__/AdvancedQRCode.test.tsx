@@ -303,7 +303,7 @@ describe('AdvancedQRCode', () => {
   })
 
   describe('Preset Themes', () => {
-    Object.keys(PRESET_THEMES).forEach((theme,i) => {
+    Object.keys(PRESET_THEMES).forEach((theme, i) => {
       it(`should apply ${theme} theme`, () => {
         const { container } = render(
           <AdvancedQRCode
