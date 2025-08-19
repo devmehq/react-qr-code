@@ -2,9 +2,46 @@
 <html lang='en'>
 <head>
   <meta charset='UTF-8' />
-  <title>QR CODE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React QR Code - Advanced Demo</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css' />
   <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+
+    .demo-header {
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .demo-header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .qr-card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      margin-bottom: 30px;
+    }
+
+    .qr-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      min-height: 300px;
+    }
+
     code, samp, kbd {
       font-family: "Courier New", Courier, monospace, sans-serif;
       text-align: left;
@@ -23,23 +60,14 @@
       overflow: auto;
       width: 93%;
     }
-
-    /* target IE7 and IE6 */
-    *:first-child + html pre {
-      padding-bottom: 2em;
-      overflow-y: hidden;
-      overflow: visible;
-      overflow-x: auto;
-    }
-
-    * html pre {
-      padding-bottom: 2em;
-      overflow: visible;
-      overflow-x: auto;
-    }
   </style>
 </head>
 <body>
+
+<div class="demo-header">
+  <h1>🎨 React QR Code Demo</h1>
+  <p>The most powerful QR code generator for React</p>
+</div>
 
 <!-- We will put our React component inside this div. -->
 <div id='root'></div>
@@ -53,13 +81,10 @@
   }
 </script>
 <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-<script src='https://unpkg.com/react@latest/umd/react.development.js' crossorigin></script>
-<script src='https://unpkg.com/react-dom@latest/umd/react-dom.development.js' crossorigin></script>
+<script src='https://unpkg.com/react@18/umd/react.development.js' crossorigin></script>
+<script src='https://unpkg.com/react-dom@18/umd/react-dom.development.js' crossorigin></script>
 <script src='https://unpkg.com/babel-standalone@latest/babel.min.js'></script>
-<!--<script nomodule src="https://unpkg.com/browser-es-module-loader/dist/babel-browser-build.js"></script>-->
-<!--<script nomodule src="https://unpkg.com/browser-es-module-loader"></script>-->
-<script src='./../dist/index.js' crossorigin='anonymous'></script>
-<!--<script src='https://unpkg.com/@devmehq/react-qr-code@latest/bundles/index.umd.js' crossorigin='anonymous'></script>-->
+<script src='./../dist/index.umd.js' crossorigin='anonymous'></script>
 <!-- Load our React component. -->
 <script type='text/babel' src='app.jsx'></script>
 

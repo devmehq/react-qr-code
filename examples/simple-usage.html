@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React QR Code - Simple Usage Examples</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github-dark.min.css' />
+  <style>
+    body {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      min-height: 100vh;
+      padding: 40px 0;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .example-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .qr-preview {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: #3498db;
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      margin-right: 15px;
+    }
+
+    .step-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .feature-list li:before {
+      content: "✅";
+      margin-right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .example-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>📚 Simple Usage Examples</h1>
+    <p class="lead">Get started with React QR Code in minutes</p>
+  </div>
+
+  <!-- Installation -->
+  <div class="example-card">
+    <div class="step-title">
+      <span class="step-number">1</span>
+      Installation
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>NPM</h5>
+        <div class="code-block">
+          <pre><code class="language-bash">npm install @devmehq/react-qr-code</code></pre>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5>Yarn</h5>
+        <div class="code-block">
+          <pre><code class="language-bash">yarn add @devmehq/react-qr-code</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Basic Import -->
+  <div class="example-card">
+    <div class="step-title">
+      <span class="step-number">2</span>
+      Basic Import & Usage
+    </div>
+    <div class="example-grid">
+      <div>
+        <div class="code-block">
+          <pre><code class="language-javascript">import { ReactQrCode } from '@devmehq/react-qr-code';
+
+function MyComponent() {
+  return (
+    &lt;ReactQrCode
+      value="https://example.com"
+      size={200}
+    /&gt;
+  );
+}</code></pre>
+        </div>
+      </div>
+      <div class="qr-preview" id="basic-demo">
+        <!-- QR Code will be rendered here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Colors -->
+  <div class="example-card">
+    <div class="step-title">
+      <span class="step-number">3</span>
+      Custom Colors
+    </div>
+    <div class="example-grid">
+      <div>
+        <div class="code-block">
+          <pre><code class="language-javascript">&lt;ReactQrCode
+  value="Custom colors example"
+  size={200}
+  bgColor="#f8f9fa"
+  fgColor="#343a40"
+  level="M"
+/&gt;</code></pre>
+        </div>
+      </div>
+      <div class="qr-preview" id="colors-demo">
+        <!-- QR Code will be rendered here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- With Logo -->
+  <div class="example-card">
+    <div class="step-title">
+      <span class="step-number">4</span>
+      QR Code with Logo
+    </div>
+    <div class="example-grid">
+      <div>
+        <div class="code-block">
+          <pre><code class="language-javascript">&lt;ReactQrCode
+  value="https://react.dev"
+  size={200}
+  imageSettings={{
+    src: "https://react.dev/favicon.ico",
+    width: 30,
+    height: 30,
+    excavate: true,
+    opacity: 1
+  }}
+/&gt;</code></pre>
+        </div>
+      </div>
+      <div class="qr-preview" id="logo-demo">
+        <!-- QR Code will be rendered here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Advanced Usage -->
+  <div class="example-card">
+    <div class="step-title">
+      <span class="step-number">5</span>
+      Advanced Customization
+    </div>
+    <div class="example-grid">
+      <div>
+        <div class="code-block">
+          <pre><code class="language-javascript">import { AdvancedQRCode } from '@devmehq/react-qr-code';
+
+&lt;AdvancedQRCode
+  value="Advanced QR Code"
+  size={200}
+  theme="modern"
+  advancedStyle={{
+    eyes: {
+      frameShape: 'circle',
+      pupilShape: 'circle'
+    },
+    body: {
+      shape: 'rounded'
+    }
+  }}
+/&gt;</code></pre>
+        </div>
+      </div>
+      <div class="qr-preview" id="advanced-demo">
+        <!-- QR Code will be rendered here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Types -->
+  <div class="example-card">
+    <div class="step-title">
+      <span class="step-number">6</span>
+      Special Data Types
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>WiFi QR Code</h5>
+        <div class="code-block">
+          <pre><code class="language-javascript">import { QRHelpers } from '@devmehq/react-qr-code';
+
+&lt;ReactQrCode
+  value={QRHelpers.wifi(
+    'MyNetwork',
+    'password123',
+    'WPA2'
+  )}
+  size={150}
+/&gt;</code></pre>
+        </div>
+        <div class="qr-preview mt-3" id="wifi-demo" style="min-height: 180px;">
+          <!-- WiFi QR Code will be rendered here -->
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5>Contact vCard</h5>
+        <div class="code-block">
+          <pre><code class="language-javascript">&lt;ReactQrCode
+  value={QRHelpers.vcard({
+    firstName: 'John',
+    lastName: 'Doe',
+    phone: '+1234567890',
+    email: 'john@example.com'
+  })}
+  size={150}
+/&gt;</code></pre>
+        </div>
+        <div class="qr-preview mt-3" id="vcard-demo" style="min-height: 180px;">
+          <!-- vCard QR Code will be rendered here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features List -->
+  <div class="example-card">
+    <div class="step-title">
+      <span class="step-number">✨</span>
+      Key Features
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="feature-list">
+          <li>12+ Eye shapes (circle, star, flower, etc.)</li>
+          <li>18+ Body patterns (fluid, hexagon, etc.)</li>
+          <li>12+ Background patterns</li>
+          <li>5 Preset themes</li>
+          <li>Gradient support</li>
+          <li>Animation effects</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="feature-list">
+          <li>WiFi, vCard, SMS data types</li>
+          <li>Logo/image embedding</li>
+          <li>Custom error correction levels</li>
+          <li>SVG and Canvas rendering</li>
+          <li>TypeScript support</li>
+          <li>Tree-shakable exports</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Load React and dependencies -->
+<script type='text/javascript'>
+  process = { env: { NODE_ENV: 'development' } }
+</script>
+<script src='https://unpkg.com/react@18/umd/react.development.js' crossorigin></script>
+<script src='https://unpkg.com/react-dom@18/umd/react-dom.development.js' crossorigin></script>
+<script src='https://unpkg.com/babel-standalone@latest/babel.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js'></script>
+<script src='./../dist/index.umd.js'></script>
+
+<script type='text/babel'>
+  const { ReactQrCode, AdvancedQRCode, QRHelpers } = window.ReactQrCode;
+
+  // Render basic demo
+  ReactDOM.createRoot(document.getElementById('basic-demo')).render(
+    <ReactQrCode
+      value="https://example.com"
+      size={180}
+    />
+  );
+
+  // Render colors demo
+  ReactDOM.createRoot(document.getElementById('colors-demo')).render(
+    <ReactQrCode
+      value="Custom colors example"
+      size={180}
+      bgColor="#f8f9fa"
+      fgColor="#343a40"
+      level="M"
+    />
+  );
+
+  // Render logo demo
+  ReactDOM.createRoot(document.getElementById('logo-demo')).render(
+    <ReactQrCode
+      value="https://react.dev"
+      size={180}
+      imageSettings={{
+        src: "https://react.dev/favicon.ico",
+        width: 25,
+        height: 25,
+        excavate: true,
+        opacity: 1
+      }}
+    />
+  );
+
+  // Render advanced demo
+  ReactDOM.createRoot(document.getElementById('advanced-demo')).render(
+    <AdvancedQRCode
+      value="Advanced QR Code"
+      size={180}
+      theme="modern"
+      advancedStyle={{
+        eyes: {
+          frameShape: 'circle',
+          pupilShape: 'circle'
+        },
+        body: {
+          shape: 'rounded'
+        }
+      }}
+    />
+  );
+
+  // Render WiFi demo
+  ReactDOM.createRoot(document.getElementById('wifi-demo')).render(
+    <ReactQrCode
+      value={QRHelpers.wifi('MyNetwork', 'password123', 'WPA2')}
+      size={140}
+      bgColor="#e3f2fd"
+      fgColor="#1976d2"
+    />
+  );
+
+  // Render vCard demo
+  ReactDOM.createRoot(document.getElementById('vcard-demo')).render(
+    <ReactQrCode
+      value={QRHelpers.vcard({
+        firstName: 'John',
+        lastName: 'Doe',
+        phone: '+1234567890',
+        email: 'john@example.com'
+      })}
+      size={140}
+      bgColor="#f3e5f5"
+      fgColor="#7b1fa2"
+    />
+  );
+</script>
+
+<script>
+  // Initialize syntax highlighting
+  document.addEventListener('DOMContentLoaded', (event) => {
+    hljs.highlightAll();
+  });
+</script>
+
+</body>
+</html>

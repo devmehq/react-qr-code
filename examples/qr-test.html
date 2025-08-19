@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Detectability Test</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css' />
+  <style>
+    body {
+      background: #f8f9fa;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .test-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .qr-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+
+    .test-result {
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    .test-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .test-failure {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .test-warning {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeaa7;
+    }
+
+    .contrast-info {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .loader {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-center mb-4">🔍 QR Code Detectability Test</h1>
+  <p class="text-center text-muted mb-5">Testing all QR codes for proper contrast and detectability</p>
+
+  <div id="test-results" class="test-grid">
+    <div class="loader">Loading QR decoder library...</div>
+  </div>
+</div>
+
+<!-- Load dependencies -->
+<script type='text/javascript'>
+  process = { env: { NODE_ENV: 'development' } }
+</script>
+<script src='https://unpkg.com/react@18/umd/react.development.js'></script>
+<script src='https://unpkg.com/react-dom@18/umd/react-dom.development.js'></script>
+<script src='https://unpkg.com/babel-standalone@latest/babel.min.js'></script>
+<script src='https://unpkg.com/qr-scanner@1.4.2/qr-scanner.umd.min.js'></script>
+<script src='./../dist/index.umd.js'></script>
+
+<script type='text/babel'>
+  const { ReactQrCode, AdvancedQRCode, QRHelpers, PRESET_THEMES } = window.ReactQrCode;
+
+  // QR Code test cases
+  const testCases = [
+    {
+      name: "Basic QR Code",
+      component: (
+        <ReactQrCode 
+          value="https://example.com"
+          size={200}
+        />
+      ),
+      expectedValue: "https://example.com"
+    },
+    {
+      name: "Custom Colors",
+      component: (
+        <ReactQrCode 
+          value="Custom colors test"
+          size={200}
+          bgColor="#f8f9fa"
+          fgColor="#343a40"
+        />
+      ),
+      expectedValue: "Custom colors test"
+    },
+    {
+      name: "Modern Theme",
+      component: (
+        <AdvancedQRCode 
+          value="Modern theme test"
+          size={200}
+          theme="modern"
+        />
+      ),
+      expectedValue: "Modern theme test"
+    },
+    {
+      name: "Neon Theme (Original)",
+      component: (
+        <AdvancedQRCode 
+          value="Neon theme test"
+          size={200}
+          theme="neon"
+        />
+      ),
+      expectedValue: "Neon theme test"
+    },
+    {
+      name: "Neon Theme (Fixed)",
+      component: (
+        <AdvancedQRCode 
+          value="Neon theme fixed"
+          size={200}
+          advancedStyle={{
+            eyes: {
+              frameShape: 'circle',
+              frameColor: '#00ff41',
+              pupilShape: 'circle',
+              pupilColor: '#00ff41',
+              frameEffect: 'glow'
+            },
+            body: {
+              shape: 'circle',
+              color: '#00ff41'
+            },
+            background: {
+              primaryColor: '#000000'
+            }
+          }}
+        />
+      ),
+      expectedValue: "Neon theme fixed"
+    },
+    {
+      name: "Cyberpunk Theme",
+      component: (
+        <AdvancedQRCode 
+          value="Cyberpunk test"
+          size={200}
+          theme="cyberpunk"
+        />
+      ),
+      expectedValue: "Cyberpunk test"
+    },
+    {
+      name: "Nature Theme",
+      component: (
+        <AdvancedQRCode 
+          value="Nature test"
+          size={200}
+          theme="nature"
+        />
+      ),
+      expectedValue: "Nature test"
+    },
+    {
+      name: "WiFi QR Code",
+      component: (
+        <ReactQrCode 
+          value={QRHelpers.wifi('TestNetwork', 'password123', 'WPA2')}
+          size={200}
+        />
+      ),
+      expectedValue: "WIFI:T:WPA2;S:TestNetwork;P:password123;H:false;;"
+    },
+    {
+      name: "High Contrast Test",
+      component: (
+        <ReactQrCode 
+          value="High contrast test"
+          size={200}
+          bgColor="#ffffff"
+          fgColor="#000000"
+        />
+      ),
+      expectedValue: "High contrast test"
+    },
+    {
+      name: "Low Contrast Test (Should Fail)",
+      component: (
+        <ReactQrCode 
+          value="Low contrast test"
+          size={200}
+          bgColor="#888888"
+          fgColor="#777777"
+        />
+      ),
+      expectedValue: "Low contrast test"
+    }
+  ];
+
+  // Calculate contrast ratio
+  function getContrastRatio(color1, color2) {
+    const getLuminance = (color) => {
+      const rgb = parseInt(color.slice(1), 16);
+      const r = (rgb >> 16) & 0xff;
+      const g = (rgb >> 8) & 0xff;
+      const b = (rgb >> 0) & 0xff;
+      
+      const [rs, gs, bs] = [r, g, b].map(c => {
+        c = c / 255;
+        return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      });
+      
+      return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+    };
+
+    const lum1 = getLuminance(color1);
+    const lum2 = getLuminance(color2);
+    const brightest = Math.max(lum1, lum2);
+    const darkest = Math.min(lum1, lum2);
+    return (brightest + 0.05) / (darkest + 0.05);
+  }
+
+  // Test QR code detectability
+  async function testQRCode(svgElement, expectedValue) {
+    try {
+      // Convert SVG to canvas
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const svgData = new XMLSerializer().serializeToString(svgElement);
+      const img = new Image();
+      
+      return new Promise((resolve) => {
+        img.onload = async () => {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.drawImage(img, 0, 0);
+          
+          try {
+            // Use QrScanner to decode
+            const result = await QrScanner.scanImage(canvas, { returnDetailedScanResult: true });
+            const success = result && result.data === expectedValue;
+            resolve({
+              success,
+              decodedValue: result ? result.data : null,
+              error: null
+            });
+          } catch (error) {
+            resolve({
+              success: false,
+              decodedValue: null,
+              error: error.message
+            });
+          }
+        };
+        
+        img.onerror = () => {
+          resolve({
+            success: false,
+            decodedValue: null,
+            error: 'Failed to load SVG as image'
+          });
+        };
+        
+        img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+      });
+    } catch (error) {
+      return {
+        success: false,
+        decodedValue: null,
+        error: error.message
+      };
+    }
+  }
+
+  // Render test results
+  function TestResult({ name, component, expectedValue, index }) {
+    const [testResult, setTestResult] = React.useState(null);
+    const [testing, setTesting] = React.useState(false);
+    const containerRef = React.useRef();
+
+    React.useEffect(() => {
+      const runTest = async () => {
+        setTesting(true);
+        
+        // Wait for component to render
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        const svgElement = containerRef.current?.querySelector('svg');
+        if (svgElement) {
+          const result = await testQRCode(svgElement, expectedValue);
+          setTestResult(result);
+        } else {
+          setTestResult({
+            success: false,
+            decodedValue: null,
+            error: 'No SVG element found'
+          });
+        }
+        
+        setTesting(false);
+      };
+
+      runTest();
+    }, [expectedValue]);
+
+    const getResultClass = () => {
+      if (testing) return 'test-warning';
+      if (!testResult) return 'test-warning';
+      return testResult.success ? 'test-success' : 'test-failure';
+    };
+
+    const getResultText = () => {
+      if (testing) return '🔄 Testing...';
+      if (!testResult) return '⏳ Waiting...';
+      if (testResult.success) return '✅ Detectable';
+      return `❌ Not detectable: ${testResult.error || 'Decode failed'}`;
+    };
+
+    return (
+      <div className="test-card">
+        <h5>{name}</h5>
+        <div className="qr-display" ref={containerRef}>
+          {component}
+        </div>
+        <div className={`test-result ${getResultClass()}`}>
+          {getResultText()}
+        </div>
+        {testResult && testResult.decodedValue && (
+          <div className="contrast-info">
+            Expected: {expectedValue}<br/>
+            Decoded: {testResult.decodedValue}<br/>
+            Match: {testResult.decodedValue === expectedValue ? 'Yes' : 'No'}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Main test component
+  function QRTest() {
+    return (
+      <div className="test-grid">
+        {testCases.map((testCase, index) => (
+          <TestResult
+            key={index}
+            name={testCase.name}
+            component={testCase.component}
+            expectedValue={testCase.expectedValue}
+            index={index}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  // Wait for QrScanner to load
+  function waitForQrScanner() {
+    return new Promise((resolve) => {
+      if (window.QrScanner) {
+        resolve();
+      } else {
+        const interval = setInterval(() => {
+          if (window.QrScanner) {
+            clearInterval(interval);
+            resolve();
+          }
+        }, 100);
+      }
+    });
+  }
+
+  // Initialize tests
+  waitForQrScanner().then(() => {
+    ReactDOM.createRoot(document.getElementById('test-results')).render(<QRTest />);
+  });
+</script>
+
+</body>
+</html>

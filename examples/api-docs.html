@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React QR Code - API Documentation</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github.min.css' />
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 280px;
+      background: #343a40;
+      padding: 20px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .sidebar h5 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .sidebar .nav-link {
+      color: #adb5bd;
+      padding: 8px 0;
+      border: none;
+      font-size: 14px;
+    }
+
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      padding-left: 10px;
+    }
+
+    .main-content {
+      margin-left: 300px;
+      padding: 40px;
+      max-width: 1000px;
+    }
+
+    .api-section {
+      margin-bottom: 50px;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .api-section h2 {
+      color: #2c3e50;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+    }
+
+    .api-section h3 {
+      color: #34495e;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    .prop-table {
+      background: #f8f9fa;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .prop-table table {
+      margin: 0;
+    }
+
+    .prop-table th {
+      background: #e9ecef;
+      font-weight: 600;
+      color: #495057;
+    }
+
+    .prop-name {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    .prop-type {
+      font-family: 'Monaco', 'Menlo', monospace;
+      color: #27ae60;
+      font-size: 12px;
+    }
+
+    .prop-required {
+      color: #e74c3c;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .code-example {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    .demo-preview {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+
+    .type-badge {
+      display: inline-block;
+      background: #17a2b8;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      margin-left: 10px;
+    }
+
+    @media (max-width: 1200px) {
+      .sidebar {
+        display: none;
+      }
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar Navigation -->
+<nav class="sidebar">
+  <h5>📚 API Documentation</h5>
+  <div class="nav flex-column">
+    <a class="nav-link" href="#overview">Overview</a>
+    <a class="nav-link" href="#basic-props">Basic Props</a>
+    <a class="nav-link" href="#advanced-props">Advanced Props</a>
+    <a class="nav-link" href="#themes">Themes</a>
+    <a class="nav-link" href="#data-helpers">Data Helpers</a>
+    <a class="nav-link" href="#methods">Methods</a>
+    <a class="nav-link" href="#examples">Examples</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content">
+
+  <!-- Overview -->
+  <section id="overview" class="api-section">
+    <h2>📖 Overview</h2>
+    <p>React QR Code provides two main components:</p>
+    <ul>
+      <li><strong>ReactQrCode</strong> - Basic QR code component with essential features</li>
+      <li><strong>AdvancedQRCode</strong> - Advanced component with 100+ customization options</li>
+    </ul>
+    
+    <h3>Import</h3>
+    <div class="code-example">
+      <pre><code>// Basic component
+import { ReactQrCode } from '@devmehq/react-qr-code';
+
+// Advanced component with themes and helpers
+import { 
+  AdvancedQRCode, 
+  QRHelpers, 
+  PRESET_THEMES 
+} from '@devmehq/react-qr-code';</code></pre>
+    </div>
+  </section>
+
+  <!-- Basic Props -->
+  <section id="basic-props" class="api-section">
+    <h2>⚙️ ReactQrCode Props</h2>
+    
+    <div class="prop-table">
+      <table class="table table-striped mb-0">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="prop-name">value</span> <span class="prop-required">*</span></td>
+            <td><span class="prop-type">string | QRDataType</span></td>
+            <td>-</td>
+            <td>The data to encode in the QR code</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">size</span></td>
+            <td><span class="prop-type">number</span></td>
+            <td>256</td>
+            <td>Size of the QR code in pixels</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">bgColor</span></td>
+            <td><span class="prop-type">string</span></td>
+            <td>'#ffffff'</td>
+            <td>Background color (hex, rgb, etc.)</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">fgColor</span></td>
+            <td><span class="prop-type">string</span></td>
+            <td>'#000000'</td>
+            <td>Foreground color (hex, rgb, etc.)</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">level</span></td>
+            <td><span class="prop-type">'L' | 'M' | 'Q' | 'H'</span></td>
+            <td>'L'</td>
+            <td>Error correction level</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">renderAs</span></td>
+            <td><span class="prop-type">'svg' | 'canvas'</span></td>
+            <td>'svg'</td>
+            <td>Render method</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">includeMargin</span></td>
+            <td><span class="prop-type">boolean</span></td>
+            <td>true</td>
+            <td>Include margin in the QR code</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">imageSettings</span></td>
+            <td><span class="prop-type">ImageSettings</span></td>
+            <td>undefined</td>
+            <td>Logo/image configuration</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>ImageSettings Interface</h3>
+    <div class="code-example">
+      <pre><code>interface ImageSettings {
+  src: string;           // Image URL or data URI
+  width?: number;        // Image width (default: 60)
+  height?: number;       // Image height (default: 60)
+  x?: number;           // X position (default: center)
+  y?: number;           // Y position (default: center)
+  opacity?: number;     // Image opacity 0-1 (default: 1)
+  excavate?: boolean;   // Remove QR modules behind image (default: false)
+}</code></pre>
+    </div>
+
+    <h3>Basic Example</h3>
+    <div class="code-example">
+      <pre><code>&lt;ReactQrCode 
+  value="https://example.com"
+  size={200}
+  bgColor="#f0f0f0"
+  fgColor="#333333"
+  level="M"
+  imageSettings={{
+    src: "/logo.png",
+    width: 30,
+    height: 30,
+    excavate: true
+  }}
+/&gt;</code></pre>
+    </div>
+
+    <div class="demo-preview" id="basic-demo">
+      <!-- Basic demo will be rendered here -->
+    </div>
+  </section>
+
+  <!-- Advanced Props -->
+  <section id="advanced-props" class="api-section">
+    <h2>🎨 AdvancedQRCode Props</h2>
+    <p>All ReactQrCode props plus:</p>
+    
+    <div class="prop-table">
+      <table class="table table-striped mb-0">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="prop-name">theme</span></td>
+            <td><span class="prop-type">'modern' | 'neon' | 'vintage' | 'cyberpunk' | 'nature'</span></td>
+            <td>undefined</td>
+            <td>Preset theme</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">advancedStyle</span></td>
+            <td><span class="prop-type">AdvancedQRStyleOptions</span></td>
+            <td>undefined</td>
+            <td>Advanced customization options</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">animated</span></td>
+            <td><span class="prop-type">boolean</span></td>
+            <td>false</td>
+            <td>Enable fade-in animation</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">animationDuration</span></td>
+            <td><span class="prop-type">number</span></td>
+            <td>300</td>
+            <td>Animation duration in ms</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>AdvancedQRStyleOptions</h3>
+    <div class="code-example">
+      <pre><code>interface AdvancedQRStyleOptions {
+  eyes?: {
+    frameShape?: 'square' | 'circle' | 'rounded' | 'leaf' | 'star' | 'diamond' | 'flower' | 'heart' | 'octagon' | 'hexagon' | 'cross' | 'gear';
+    frameColor?: string | GradientConfig;
+    frameEffect?: 'none' | 'shadow' | 'glow' | 'inner-shadow' | 'blur' | '3d' | 'emboss' | 'neon' | 'metallic' | 'glass' | 'chrome' | 'holographic';
+    pupilShape?: 'square' | 'circle' | 'rounded' | 'leaf' | 'star' | 'diamond' | 'flower' | 'heart' | 'octagon' | 'hexagon' | 'cross' | 'gear';
+    pupilColor?: string | GradientConfig;
+    pupilEffect?: ColorEffect;
+    // Position-specific customization
+    topLeft?: Partial&lt;SingleEyeConfig&gt;;
+    topRight?: Partial&lt;SingleEyeConfig&gt;;
+    bottomLeft?: Partial&lt;SingleEyeConfig&gt;;
+  };
+  body?: {
+    shape?: 'square' | 'circle' | 'rounded' | 'diamond' | 'star' | 'dot' | 'line-vertical' | 'line-horizontal' | 'plus' | 'cross' | 'zigzag' | 'wave' | 'fluid' | 'hexagon' | 'octagon' | 'triangle' | 'mosaic' | 'pixel' | 'bubble';
+    color?: string | GradientConfig;
+    effect?: ColorEffect;
+    pattern?: BodyPattern;
+    density?: number;    // 0-1
+    gap?: number;        // Gap between modules
+    roundness?: number;  // Corner radius
+    rotation?: number;   // Rotation angle
+  };
+  background?: {
+    pattern?: 'none' | 'dots' | 'lines' | 'grid' | 'waves' | 'zigzag' | 'checkerboard' | 'diagonal' | 'triangles' | 'hexagons' | 'circles' | 'stars' | 'noise';
+    patternColor?: string | GradientConfig;
+    patternOpacity?: number;
+    primaryColor?: string | GradientConfig;
+    image?: BackgroundImage;
+    border?: BorderConfig;
+    effects?: BackgroundEffect[];
+    rounded?: boolean | number;
+  };
+  effects?: {
+    global?: ColorEffect;
+    glow?: GlowConfig;
+    shadow?: ShadowConfig;
+    // ... more effects
+  };
+}</code></pre>
+    </div>
+
+    <h3>Gradient Configuration</h3>
+    <div class="code-example">
+      <pre><code>interface GradientConfig {
+  type: 'linear' | 'radial' | 'conic';
+  colors: Array&lt;{
+    color: string;
+    offset: number; // 0-1
+    opacity?: number;
+  }&gt;;
+  angle?: number;           // For linear gradients
+  center?: { x: number; y: number }; // For radial/conic
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Themes -->
+  <section id="themes" class="api-section">
+    <h2>🎭 Preset Themes</h2>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Modern Theme</h3>
+        <div class="code-example">
+          <pre><code>&lt;AdvancedQRCode 
+  value="Modern theme"
+  size={180}
+  theme="modern"
+/&gt;</code></pre>
+        </div>
+        <div class="demo-preview" id="modern-demo"></div>
+      </div>
+      
+      <div class="col-md-6">
+        <h3>Neon Theme</h3>
+        <div class="code-example">
+          <pre><code>&lt;AdvancedQRCode 
+  value="Neon theme"
+  size={180}
+  theme="neon"
+/&gt;</code></pre>
+        </div>
+        <div class="demo-preview" id="neon-demo"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Cyberpunk Theme</h3>
+        <div class="code-example">
+          <pre><code>&lt;AdvancedQRCode 
+  value="Cyberpunk theme"
+  size={180}
+  theme="cyberpunk"
+/&gt;</code></pre>
+        </div>
+        <div class="demo-preview" id="cyberpunk-demo"></div>
+      </div>
+      
+      <div class="col-md-6">
+        <h3>Nature Theme</h3>
+        <div class="code-example">
+          <pre><code>&lt;AdvancedQRCode 
+  value="Nature theme"
+  size={180}
+  theme="nature"
+/&gt;</code></pre>
+        </div>
+        <div class="demo-preview" id="nature-demo"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Helpers -->
+  <section id="data-helpers" class="api-section">
+    <h2>📱 Data Helpers (QRHelpers)</h2>
+    
+    <h3>WiFi QR Code</h3>
+    <div class="code-example">
+      <pre><code>QRHelpers.wifi(
+  ssid: string,           // Network name
+  password?: string,      // Network password
+  security?: 'WEP' | 'WPA' | 'WPA2' | 'nopass',
+  hidden?: boolean        // Hidden network
+)</code></pre>
+    </div>
+    
+    <h3>Contact vCard</h3>
+    <div class="code-example">
+      <pre><code>QRHelpers.vcard({
+  firstName?: string,
+  lastName?: string,
+  organization?: string,
+  phone?: string,
+  email?: string,
+  url?: string,
+  address?: string
+})</code></pre>
+    </div>
+    
+    <h3>Other Data Types</h3>
+    <div class="code-example">
+      <pre><code>// SMS Message
+QRHelpers.sms(phone: string, message?: string)
+
+// Email
+QRHelpers.email(to: string, subject?: string, body?: string)
+
+// Geographic Location
+QRHelpers.geo(latitude: number, longitude: number, altitude?: number)
+
+// Calendar Event
+QRHelpers.event({
+  summary: string,
+  startDate: Date,
+  endDate?: Date,
+  location?: string,
+  description?: string
+})
+
+// Phone Number
+QRHelpers.phone(number: string)
+
+// Plain Text
+QRHelpers.text(text: string)
+
+// URL
+QRHelpers.url(url: string)</code></pre>
+    </div>
+  </section>
+
+  <!-- Methods -->
+  <section id="methods" class="api-section">
+    <h2>🔧 Component Methods</h2>
+    <p>Access methods using React refs:</p>
+    
+    <div class="code-example">
+      <pre><code>const qrRef = useRef&lt;QRCodeRef&gt;(null);
+
+// Download QR code as image
+await qrRef.current?.download();
+
+// Copy QR code to clipboard
+await qrRef.current?.copy();
+
+// Get data URL
+const dataUrl = await qrRef.current?.getDataURL();
+
+// Get SVG string
+const svgString = qrRef.current?.getSVGString();</code></pre>
+    </div>
+    
+    <h3>Method Definitions</h3>
+    <div class="prop-table">
+      <table class="table table-striped mb-0">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Return Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="prop-name">download()</span></td>
+            <td><span class="prop-type">Promise&lt;void&gt;</span></td>
+            <td>Download QR code as PNG image</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">copy()</span></td>
+            <td><span class="prop-type">Promise&lt;void&gt;</span></td>
+            <td>Copy QR code to clipboard</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">getDataURL()</span></td>
+            <td><span class="prop-type">Promise&lt;string&gt;</span></td>
+            <td>Get QR code as data URL</td>
+          </tr>
+          <tr>
+            <td><span class="prop-name">getSVGString()</span></td>
+            <td><span class="prop-type">string</span></td>
+            <td>Get QR code as SVG string</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section id="examples" class="api-section">
+    <h2>💡 Complete Examples</h2>
+    
+    <h3>Complex Custom QR Code</h3>
+    <div class="code-example">
+      <pre><code>&lt;AdvancedQRCode 
+  value="https://example.com"
+  size={300}
+  level="H"
+  advancedStyle={{
+    eyes: {
+      frameShape: 'flower',
+      frameColor: {
+        type: 'linear',
+        colors: [
+          { color: '#667eea', offset: 0 },
+          { color: '#764ba2', offset: 1 }
+        ],
+        angle: 45
+      },
+      pupilShape: 'star',
+      pupilColor: '#ffffff',
+      frameEffect: 'glow'
+    },
+    body: {
+      shape: 'hexagon',
+      color: {
+        type: 'radial',
+        colors: [
+          { color: '#667eea', offset: 0 },
+          { color: '#764ba2', offset: 1 }
+        ],
+        center: { x: 50, y: 50 }
+      },
+      effect: 'holographic',
+      density: 0.9
+    },
+    background: {
+      pattern: 'grid',
+      patternColor: '#e0e0e0',
+      patternOpacity: 0.1,
+      border: {
+        width: 4,
+        color: '#667eea',
+        style: 'solid',
+        radius: 16
+      }
+    }
+  }}
+  animated={true}
+  animationDuration={800}
+  imageSettings={{
+    src: '/logo.png',
+    width: 40,
+    height: 40,
+    excavate: true
+  }}
+/&gt;</code></pre>
+    </div>
+
+    <div class="demo-preview" id="complex-demo">
+      <!-- Complex demo will be rendered here -->
+    </div>
+
+    <h3>With Ref and Methods</h3>
+    <div class="code-example">
+      <pre><code>import React, { useRef } from 'react';
+import { ReactQrCode, QRCodeRef } from '@devmehq/react-qr-code';
+
+function MyComponent() {
+  const qrRef = useRef&lt;QRCodeRef&gt;(null);
+
+  const handleDownload = async () => {
+    await qrRef.current?.download();
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;ReactQrCode 
+        ref={qrRef}
+        value="Download me!"
+        size={200}
+      /&gt;
+      &lt;button onClick={handleDownload}&gt;
+        Download QR Code
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+    </div>
+  </section>
+
+</div>
+
+<!-- Load React and dependencies -->
+<script type='text/javascript'>
+  process = { env: { NODE_ENV: 'development' } }
+</script>
+<script src='https://unpkg.com/react@latest/umd/react.development.js'></script>
+<script src='https://unpkg.com/react-dom@latest/umd/react-dom.development.js'></script>
+<script src='https://unpkg.com/babel-standalone@latest/babel.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js'></script>
+<script src='./../dist/index.umd.js'></script>
+
+<script type='text/babel'>
+  const { ReactQrCode, AdvancedQRCode } = window.ReactQrCode;
+
+  // Render basic demo
+  ReactDOM.createRoot(document.getElementById('basic-demo')).render(
+    <ReactQrCode 
+      value="https://example.com"
+      size={180}
+      bgColor="#f0f0f0"
+      fgColor="#333333"
+      level="M"
+    />
+  );
+
+  // Render theme demos
+  ReactDOM.createRoot(document.getElementById('modern-demo')).render(
+    <AdvancedQRCode value="Modern theme" size={150} theme="modern" />
+  );
+
+  ReactDOM.createRoot(document.getElementById('neon-demo')).render(
+    <AdvancedQRCode value="Neon theme" size={150} theme="neon" />
+  );
+
+  ReactDOM.createRoot(document.getElementById('cyberpunk-demo')).render(
+    <AdvancedQRCode value="Cyberpunk theme" size={150} theme="cyberpunk" />
+  );
+
+  ReactDOM.createRoot(document.getElementById('nature-demo')).render(
+    <AdvancedQRCode value="Nature theme" size={150} theme="nature" />
+  );
+
+  // Render complex demo
+  ReactDOM.createRoot(document.getElementById('complex-demo')).render(
+    <AdvancedQRCode 
+      value="Complex customization"
+      size={240}
+      level="H"
+      advancedStyle={{
+        eyes: {
+          frameShape: 'flower',
+          frameColor: {
+            type: 'linear',
+            colors: [
+              { color: '#667eea', offset: 0 },
+              { color: '#764ba2', offset: 1 }
+            ],
+            angle: 45
+          },
+          pupilShape: 'star',
+          pupilColor: '#ffffff',
+          frameEffect: 'glow'
+        },
+        body: {
+          shape: 'hexagon',
+          color: '#667eea',
+          effect: 'shadow',
+          density: 0.9
+        },
+        background: {
+          pattern: 'grid',
+          patternColor: '#e0e0e0',
+          patternOpacity: 0.1,
+          border: {
+            width: 3,
+            color: '#667eea',
+            style: 'solid',
+            radius: 16
+          }
+        }
+      }}
+      animated={true}
+      animationDuration={800}
+    />
+  );
+</script>
+
+<script>
+  // Initialize syntax highlighting
+  document.addEventListener('DOMContentLoaded', (event) => {
+    hljs.highlightAll();
+    
+    // Smooth scrolling for navigation
+    document.querySelectorAll('.sidebar a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

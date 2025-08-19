@@ -33,21 +33,34 @@
     }
   ],
   "sideEffects": false,
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "unpkg": "./dist/index.umd.js",
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
     "build:prod": "NODE_ENV=production rollup -c rollup.config.mjs",
-    "lint-js": "eslint src/**/*.ts",
+    "build:watch": "rollup -c rollup.config.mjs --watch",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "typecheck": "tsc --noEmit",
     "prepare": "yarn husky install",
-    "prepublishOnly": "rm -rf dist/* && NODE_ENV=production rollup -c rollup.config.mjs",
+    "prepublishOnly": "rm -rf dist/* && yarn test && NODE_ENV=production rollup -c rollup.config.mjs",
     "prettier": "prettier --write '**/*.{ts,tsx,css,scss}'",
-    "test": "echo \"Error: no test specified\"",
-    "test-watch": "jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "lint-staged": {
     "src/*.{ts,tsx,js,jsx}": "prettier --write",
@@ -58,7 +71,11 @@
     "@rollup/plugin-commonjs": "28.0.6",
     "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-replace": "6.0.2",
+    "@rollup/plugin-terser": "0.4.4",
     "@rollup/plugin-typescript": "12.1.4",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "6.1.5",
+    "@testing-library/react": "16.3.0",
     "@types/jasmine": "5.1.9",
     "@types/jest": "30.0.0",
     "@types/react": "19.1.10",
@@ -69,11 +86,17 @@
     "eslint-config-prettier": "10.1.8",
     "husky": "9.1.7",
     "jest": "30.0.5",
+    "jest-environment-jsdom": "29.7.0",
     "lint-staged": "16.1.5",
     "prettier": "3.6.2",
     "pretty-quick": "4.2.2",
+    "puppeteer": "24.16.2",
+    "qr-scanner": "1.4.2",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
     "rollup": "4.46.3",
-    "rollup-plugin-uglify": "6.0.4",
+    "rollup-plugin-peer-deps-external": "2.2.4",
+    "rollup-plugin-visualizer": "5.12.0",
     "ts-jest": "29.4.1",
     "tslib": "2.8.1",
     "typescript": "5.9.2"

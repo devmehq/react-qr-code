@@ -1,34 +1,77 @@
-// rollup.config.js
-import typescript from '@rollup/plugin-typescript';
-import {uglify} from "rollup-plugin-uglify";
-import commonjs from "@rollup/plugin-commonjs";
-import replace from "@rollup/plugin-replace";
-import resolve from "@rollup/plugin-node-resolve";
+import typescript from '@rollup/plugin-typescript'
+import terser from '@rollup/plugin-terser'
+import commonjs from '@rollup/plugin-commonjs'
+import replace from '@rollup/plugin-replace'
+import resolve from '@rollup/plugin-node-resolve'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import { visualizer } from 'rollup-plugin-visualizer'
 
-export default {
-  input: './src/index.tsx',
+const isProduction = process.env.NODE_ENV === 'production'
+
+const createConfig = (format, outputFile) => ({
+  input: './src/index.ts',
   output: {
-    sourcemap: true,
-    dir: 'dist',
-    name: 'ReactQrCode',
-    format: 'umd',
+    file: outputFile,
+    format,
+    name: format === 'umd' ? 'ReactQrCode' : undefined,
     exports: 'named',
+    sourcemap: true,
+    globals:
+      format === 'umd'
+        ? {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+          }
+        : undefined,
   },
+  external: format === 'umd' ? ['react', 'react-dom'] : undefined,
   plugins: [
+    peerDepsExternal(),
+    resolve({
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      preferBuiltins: false,
+      browser: true,
+    }),
+    commonjs(),
     typescript({
-      //default use tsconfig.json but can be overridden here
-      //typescript: require('some-typescript-fork') //default use TS 1.8.9 but can use other specific compiler version/fork
+      tsconfig: './tsconfig.json',
+      declaration: format === 'esm',
+      declarationMap: format === 'esm',
+      declarationDir: format === 'esm' ? './dist' : undefined,
+      outputToFilesystem: true,
     }),
-    resolve({ //used to resolve NPM module reading from packages.json those entrypoint (ES6 - Main or Browser specific)
-      jsnext: true,
-      main: true,
-      browser: true
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(
+        process.env.NODE_ENV || 'development'
+      ),
+      preventAssignment: true,
     }),
-    commonjs(), //translate commonjs module to ES6 module to be handled from Rollup and tree-shake
-    replace({ //enable find-replacing variable in JS code to use ENV variable for conditional code
-      ENV: JSON.stringify(process.env.NODE_ENV || "development"),// key = var name, value = replace
-      preventAssignment: true
-    }),
-    (process.env.NODE_ENV === "production" && uglify())
-  ]
-};
+    isProduction &&
+      terser({
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+          pure_funcs: ['console.log', 'console.info', 'console.debug'],
+        },
+        format: {
+          comments: false,
+        },
+      }),
+    isProduction &&
+      format === 'esm' &&
+      visualizer({
+        filename: 'dist/stats.html',
+        gzipSize: true,
+        brotliSize: true,
+      }),
+  ].filter(Boolean),
+})
+
+export default [
+  // ESM build (primary)
+  createConfig('esm', 'dist/index.esm.js'),
+  // CommonJS build
+  createConfig('cjs', 'dist/index.cjs.js'),
+  // UMD build (for CDN usage)
+  createConfig('umd', 'dist/index.umd.js'),
+]
