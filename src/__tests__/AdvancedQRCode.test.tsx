@@ -436,7 +436,7 @@ describe('AdvancedQRCode', () => {
       expect(svg).toBeInTheDocument()
     })
 
-    it('should support color blind modes', () => {
+    describe('color blind modes', () => {
       const modes = [
         'protanopia',
         'deuteranopia',
@@ -445,19 +445,21 @@ describe('AdvancedQRCode', () => {
       ] as const
 
       modes.forEach((mode) => {
-        const { container } = render(
-          <AdvancedQRCode
-            value="test"
-            advancedStyle={{
-              accessibility: {
-                colorBlindMode: mode,
-              },
-            }}
-          />
-        )
+        it(`should support ${mode} mode`, () => {
+          const { container } = render(
+            <AdvancedQRCode
+              value="test"
+              advancedStyle={{
+                accessibility: {
+                  colorBlindMode: mode,
+                },
+              }}
+            />
+          )
 
-        const svg = container.querySelector('svg')
-        expect(svg).toBeInTheDocument()
+          const svg = container.querySelector('svg')
+          expect(svg).toBeInTheDocument()
+        })
       })
     })
 
