@@ -71,7 +71,6 @@ php -S localhost:8080 -t examples  # Using PHP
 
 ```tsx
 import { ReactQrCode } from '@devmehq/react-qr-code'
-
 ;<ReactQrCode value="https://example.com" size={256} />
 ```
 
@@ -79,7 +78,6 @@ import { ReactQrCode } from '@devmehq/react-qr-code'
 
 ```tsx
 import { AdvancedQRCode } from '@devmehq/react-qr-code'
-
 ;<AdvancedQRCode
   value="https://example.com"
   size={300}
@@ -117,7 +115,6 @@ import { AdvancedQRCode } from '@devmehq/react-qr-code'
 
 ```tsx
 import { AdvancedQRCode, QRHelpers } from '@devmehq/react-qr-code'
-
 ;<AdvancedQRCode
   value={QRHelpers.wifi('NetworkName', 'password123', 'WPA2')}
   theme="professional"

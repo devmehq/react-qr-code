@@ -238,7 +238,7 @@ export const AdvancedQRCode = forwardRef<QRCodeRef, AdvancedQRCodeProps>(
             >
               {config.colors.map((stop, index) => (
                 <stop
-                  key={index}
+                  key={`${id}-stop-${index}`}
                   offset={`${stop.offset * 100}%`}
                   stopColor={stop.color}
                   stopOpacity={stop.opacity || 1}
@@ -256,7 +256,7 @@ export const AdvancedQRCode = forwardRef<QRCodeRef, AdvancedQRCodeProps>(
             >
               {config.colors.map((stop, index) => (
                 <stop
-                  key={index}
+                  key={`${id}-stop-${index}`}
                   offset={`${stop.offset * 100}%`}
                   stopColor={stop.color}
                   stopOpacity={stop.opacity || 1}
@@ -443,7 +443,7 @@ export const AdvancedQRCode = forwardRef<QRCodeRef, AdvancedQRCodeProps>(
                   transform: scale(1);
                 }
               }
-              
+
               svg > * {
                 animation: fadeIn ${animationDuration}ms ease-in-out ${animationDelay}ms forwards;
               }
