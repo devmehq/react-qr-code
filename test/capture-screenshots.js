@@ -47,7 +47,7 @@ async function captureScreenshots() {
   try {
     for (const pageConfig of PAGES_TO_CAPTURE) {
       const page = await browser.newPage()
-      
+
       if (pageConfig.viewport) {
         await page.setViewport(pageConfig.viewport)
       } else {
@@ -56,12 +56,15 @@ async function captureScreenshots() {
 
       const url = `${SERVER_URL}/${pageConfig.url}`
       console.log(`📸 Capturing ${pageConfig.name} from ${url}`)
-      
+
       await page.goto(url, { waitUntil: 'networkidle2' })
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      await new Promise((resolve) => setTimeout(resolve, 2000))
 
       // Capture full page
-      const screenshotPath = path.join(SCREENSHOTS_DIR, `${pageConfig.name}.png`)
+      const screenshotPath = path.join(
+        SCREENSHOTS_DIR,
+        `${pageConfig.name}.png`
+      )
       await page.screenshot({ path: screenshotPath, fullPage: true })
       console.log(`   ✅ Saved: ${screenshotPath}`)
 
@@ -90,8 +93,10 @@ async function captureScreenshots() {
     // Capture individual QR code examples
     const page = await browser.newPage()
     await page.setViewport({ width: 1920, height: 1080 })
-    await page.goto(`${SERVER_URL}/advanced-demo.html`, { waitUntil: 'networkidle2' })
-    await new Promise(resolve => setTimeout(resolve, 3000))
+    await page.goto(`${SERVER_URL}/advanced-demo.html`, {
+      waitUntil: 'networkidle2',
+    })
+    await new Promise((resolve) => setTimeout(resolve, 3000))
 
     // Capture specific QR code examples
     const examples = [
@@ -107,7 +112,10 @@ async function captureScreenshots() {
       try {
         const element = await page.$(example.selector)
         if (element) {
-          const screenshotPath = path.join(SCREENSHOTS_DIR, `${example.name}.png`)
+          const screenshotPath = path.join(
+            SCREENSHOTS_DIR,
+            `${example.name}.png`
+          )
           await element.screenshot({ path: screenshotPath })
           console.log(`   ✅ Saved QR: ${screenshotPath}`)
         }
@@ -118,7 +126,6 @@ async function captureScreenshots() {
 
     await page.close()
     console.log('\n✨ Screenshots captured successfully!')
-    
   } finally {
     await browser.close()
   }

@@ -192,6 +192,7 @@ function App() {
 ```
 
 **25+ Built-in Themes:**
+
 - `minimal`, `gradient`, `ocean`, `sunset`, `forest`
 - `neon`, `cyberpunk`, `retrowave`, `pastel`, `dark`
 - `colorful`, `monochrome`, `gold`, `silver`, `bronze`
@@ -350,10 +351,8 @@ import { ReactQrCode, QRHelpers } from '@devmehq/react-qr-code'
   // Eye (finder pattern) shapes
   eyeShape="rounded" // square, circle, rounded, leaf, star, diamond, hexagon, octagon, flower, cat
   eyeFrameShape="rounded" // square, circle, rounded, dots, lines, zigzag, waves, cross, mesh, gradient
-  
-  // Body (data module) shapes  
+  // Body (data module) shapes
   bodyShape="circle" // square, circle, rounded, diamond, star, hexagon, octagon, triangle, cross, plus, dots, lines, zigzag, waves, noise, circuit, organic, fluid
-  
   // Background patterns
   backgroundPattern="dots" // none, dots, lines, grid, mesh, circuit, waves, noise, gradient, radial, hexagon, triangle
 />
@@ -406,40 +405,45 @@ interface AdvancedQRCodeProps {
   value: string
   size?: number
   level?: 'L' | 'M' | 'Q' | 'H'
-  
+
   // Themes
   theme?: PresetTheme
-  colorBlindMode?: 'none' | 'protanopia' | 'deuteranopia' | 'tritanopia' | 'achromatopsia'
-  
+  colorBlindMode?:
+    | 'none'
+    | 'protanopia'
+    | 'deuteranopia'
+    | 'tritanopia'
+    | 'achromatopsia'
+
   // Shapes
   eyeShape?: EyeShape
   eyeFrameShape?: EyeFrameShape
   bodyShape?: BodyShape
-  
+
   // Colors
   eyeColor?: string | GradientConfig
   eyeFrameColor?: string | GradientConfig
   bodyColor?: string | GradientConfig
   backgroundColor?: string | GradientConfig
-  
+
   // Gradients
   eyeGradient?: GradientConfig
   bodyGradient?: GradientConfig
   backgroundGradient?: GradientConfig
-  
+
   // Patterns
   backgroundPattern?: BackgroundPattern
-  
+
   // Effects
   animationType?: 'none' | 'fade' | 'scale' | 'rotate' | 'slide' | 'bounce'
   glowEffect?: boolean
   shadowEffect?: boolean
-  
+
   // Logo
   logo?: string
   logoSize?: number
   logoExcavate?: boolean
-  
+
   // Actions
   enableDownload?: boolean
   enableCopy?: boolean
