@@ -334,19 +334,19 @@ export const PRESET_THEMES: Record<string, QRTheme> = {
     style: {
       eyes: {
         frameShape: 'circle',
-        frameColor: '#00ff41',
+        frameColor: '#ffffff',
         frameEffect: 'glow',
         pupilShape: 'circle',
-        pupilColor: '#00ff41',
+        pupilColor: '#ffffff',
         pupilEffect: 'neon',
       },
       body: {
         shape: 'circle',
-        color: '#00ff41',
+        color: '#ffffff',
         effect: 'neon',
       },
       background: {
-        primaryColor: '#000000',
+        primaryColor: '#001a0d',
       },
       effects: {
         glow: {
