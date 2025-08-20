@@ -6,7 +6,7 @@ import {
   EmailData,
   GeoLocationData,
   EventData,
-} from '../types'
+} from '../types/types'
 
 export class DataEncoder {
   static encode(data: string | QRDataType): string {

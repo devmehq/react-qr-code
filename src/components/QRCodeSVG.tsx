@@ -6,7 +6,7 @@ import {
   QRCodeStyle,
   ModuleShape,
   GradientSettings,
-} from '../types'
+} from '../types/types'
 import { ShapeRenderer } from './shapes/ShapeRenderer'
 
 interface QRCodeSVGProps {

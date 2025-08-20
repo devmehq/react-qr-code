@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ModuleShape } from '../../types'
+import { ModuleShape } from '../../types/types'
 
 interface ShapeProps {
   shape: ModuleShape

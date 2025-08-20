@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { forwardRef, useEffect, useRef } from 'react'
 import { QRCode } from '../qr/QRCode'
-import { ImageSettings, QRCodeStyle, ModuleShape } from '../types'
+import { ImageSettings, QRCodeStyle, ModuleShape } from '../types/types'
 
 interface QRCodeCanvasProps {
   qrCode: QRCode

@@ -1,6 +1,6 @@
 // Advanced QR Code Customization Types
 
-import { ReactQrCodeProps } from '../types'
+import { ReactQrCodeProps } from './types'
 
 export interface AdvancedQRCodeProps extends Omit<ReactQrCodeProps, 'qrStyle'> {
   advancedStyle?: AdvancedQRStyleOptions

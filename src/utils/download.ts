@@ -1,5 +1,5 @@
 import { QRCode } from '../qr/QRCode'
-import { ImageSettings, QRCodeStyle } from '../types'
+import { ImageSettings, QRCodeStyle } from '../types/types'
 
 interface DownloadOptions {
   qrCode: QRCode

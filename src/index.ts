@@ -1,4 +1,4 @@
-import { QRDataType } from './types'
+import { QRDataType } from './types/types'
 
 // Main components
 export { ReactQrCode, ReactQrCode as default } from './components/ReactQrCode'
@@ -27,7 +27,7 @@ export type {
   QRModule,
   RGB,
   RGBA,
-} from './types'
+} from './types/types'
 
 // Advanced Types
 export type {
@@ -60,7 +60,7 @@ export type {
 export { PRESET_THEMES } from './types/advanced'
 
 // Error classes
-export { QRCodeError, DataTooLongError, InvalidDataError } from './types'
+export { QRCodeError, DataTooLongError, InvalidDataError } from './types/types'
 
 // Constants
 export {
@@ -68,7 +68,7 @@ export {
   QR_MODES,
   MAX_VERSION,
   MIN_VERSION,
-} from './types'
+} from './types/types'
 
 // Utilities
 export { DataEncoder } from './utils/dataEncoder'

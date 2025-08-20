@@ -1,4 +1,4 @@
-import { InvalidDataError, DataTooLongError } from '../types'
+import { InvalidDataError, DataTooLongError } from '../types/types'
 
 const MAX_LENGTH = {
   L: { 1: 25, 10: 172, 27: 702, 40: 2953 },

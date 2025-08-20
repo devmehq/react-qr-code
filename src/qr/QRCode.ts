@@ -3,7 +3,7 @@ import { QRRSBlock } from './QRRSBlock'
 import { QRBitBuffer } from './QRBitBuffer'
 import { QRPolynomial } from './QRPolynomial'
 import { QR8BitByte } from './QR8BitByte'
-import { ERROR_CORRECTION_LEVELS, DataTooLongError } from '../types'
+import { ERROR_CORRECTION_LEVELS, DataTooLongError } from '../types/types'
 
 export class QRCode {
   private typeNumber: number

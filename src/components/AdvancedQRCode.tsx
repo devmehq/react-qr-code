@@ -7,7 +7,7 @@ import { downloadQRCode, copyQRCode } from '../utils/download'
 import { EyeRenderer } from './shapes/EyeRenderer'
 import { BodyRenderer } from './shapes/BodyRenderer'
 import { BackgroundRenderer } from './shapes/BackgroundRenderer'
-import { QRCodeRef, ErrorCorrectionLevel } from '../types'
+import { QRCodeRef, ErrorCorrectionLevel } from '../types/types'
 import {
   AdvancedQRCodeProps,
   GradientConfig,
