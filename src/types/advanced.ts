@@ -1,15 +1,15 @@
 // Advanced QR Code Customization Types
 
-import { ReactQrCodeProps } from '../types';
+import { ReactQrCodeProps } from '../types'
 
 export interface AdvancedQRCodeProps extends Omit<ReactQrCodeProps, 'qrStyle'> {
-  advancedStyle?: AdvancedQRStyleOptions;
-  theme?: keyof typeof PRESET_THEMES;
-  qrStyle?: ReactQrCodeProps['qrStyle']; // Keep for backwards compatibility
+  advancedStyle?: AdvancedQRStyleOptions
+  theme?: keyof typeof PRESET_THEMES
+  qrStyle?: ReactQrCodeProps['qrStyle'] // Keep for backwards compatibility
 }
 
 // Eye (Position Detection Pattern) Types
-export type EyeShape = 
+export type EyeShape =
   | 'square'
   | 'circle'
   | 'rounded'
@@ -21,9 +21,9 @@ export type EyeShape =
   | 'octagon'
   | 'hexagon'
   | 'cross'
-  | 'gear';
+  | 'gear'
 
-export type EyeFrameShape = 
+export type EyeFrameShape =
   | 'square'
   | 'circle'
   | 'rounded'
@@ -34,9 +34,9 @@ export type EyeFrameShape =
   | 'heart'
   | 'shield'
   | 'bubble'
-  | 'hexagon';
+  | 'hexagon'
 
-export type BodyShape = 
+export type BodyShape =
   | 'square'
   | 'circle'
   | 'rounded'
@@ -55,9 +55,9 @@ export type BodyShape =
   | 'triangle'
   | 'mosaic'
   | 'pixel'
-  | 'bubble';
+  | 'bubble'
 
-export type ColorEffect = 
+export type ColorEffect =
   | 'none'
   | 'shadow'
   | 'glow'
@@ -69,9 +69,9 @@ export type ColorEffect =
   | 'metallic'
   | 'glass'
   | 'chrome'
-  | 'holographic';
+  | 'holographic'
 
-export type BackgroundPattern = 
+export type BackgroundPattern =
   | 'none'
   | 'dots'
   | 'lines'
@@ -88,9 +88,9 @@ export type BackgroundPattern =
   | 'gradient-radial'
   | 'gradient-linear'
   | 'gradient-conic'
-  | 'gradient-mesh';
+  | 'gradient-mesh'
 
-export type AnimationType = 
+export type AnimationType =
   | 'none'
   | 'fade-in'
   | 'scale-up'
@@ -103,198 +103,212 @@ export type AnimationType =
   | 'morph'
   | 'glitch'
   | 'fluid'
-  | 'particle';
+  | 'particle'
 
 export interface EyeCustomization {
   // Outer frame
-  frameShape?: EyeFrameShape;
-  frameColor?: string | GradientConfig;
-  frameEffect?: ColorEffect;
-  frameSize?: number;
-  frameBorderWidth?: number;
-  frameBorderColor?: string;
-  
+  frameShape?: EyeFrameShape
+  frameColor?: string | GradientConfig
+  frameEffect?: ColorEffect
+  frameSize?: number
+  frameBorderWidth?: number
+  frameBorderColor?: string
+
   // Inner dot
-  pupilShape?: EyeShape;
-  pupilColor?: string | GradientConfig;
-  pupilEffect?: ColorEffect;
-  pupilSize?: number;
-  
+  pupilShape?: EyeShape
+  pupilColor?: string | GradientConfig
+  pupilEffect?: ColorEffect
+  pupilSize?: number
+
   // Position-specific customization
-  topLeft?: Partial<SingleEyeConfig>;
-  topRight?: Partial<SingleEyeConfig>;
-  bottomLeft?: Partial<SingleEyeConfig>;
+  topLeft?: Partial<SingleEyeConfig>
+  topRight?: Partial<SingleEyeConfig>
+  bottomLeft?: Partial<SingleEyeConfig>
 }
 
 export interface SingleEyeConfig {
-  frameShape: EyeFrameShape;
-  frameColor: string | GradientConfig;
-  pupilShape: EyeShape;
-  pupilColor: string | GradientConfig;
-  rotation?: number;
-  scale?: number;
+  frameShape: EyeFrameShape
+  frameColor: string | GradientConfig
+  pupilShape: EyeShape
+  pupilColor: string | GradientConfig
+  rotation?: number
+  scale?: number
 }
 
 export interface BodyCustomization {
-  shape?: BodyShape;
-  color?: string | GradientConfig;
-  effect?: ColorEffect;
-  pattern?: BodyPattern;
-  randomize?: boolean;
-  density?: number; // 0-1, controls how many modules are drawn
-  size?: number; // Size multiplier for body modules
-  gap?: number; // Gap between modules
-  roundness?: number; // Corner radius for rounded shapes
-  rotation?: number; // Rotation angle for patterns
+  shape?: BodyShape
+  color?: string | GradientConfig
+  effect?: ColorEffect
+  pattern?: BodyPattern
+  randomize?: boolean
+  density?: number // 0-1, controls how many modules are drawn
+  size?: number // Size multiplier for body modules
+  gap?: number // Gap between modules
+  roundness?: number // Corner radius for rounded shapes
+  rotation?: number // Rotation angle for patterns
 }
 
 export interface BodyPattern {
-  type: 'solid' | 'alternating' | 'random' | 'gradient' | 'image' | 'custom';
-  colors?: string[];
-  frequency?: number;
-  direction?: 'horizontal' | 'vertical' | 'diagonal' | 'radial';
-  customPattern?: (row: number, col: number) => string;
+  type: 'solid' | 'alternating' | 'random' | 'gradient' | 'image' | 'custom'
+  colors?: string[]
+  frequency?: number
+  direction?: 'horizontal' | 'vertical' | 'diagonal' | 'radial'
+  customPattern?: (row: number, col: number) => string
 }
 
 export interface BackgroundCustomization {
-  pattern?: BackgroundPattern;
-  patternColor?: string | GradientConfig;
-  patternOpacity?: number;
-  patternSize?: number;
-  primaryColor?: string | GradientConfig;
-  secondaryColor?: string;
-  image?: BackgroundImage;
-  blur?: number;
-  rounded?: boolean | number;
-  border?: BorderConfig;
-  effects?: BackgroundEffect[];
+  pattern?: BackgroundPattern
+  patternColor?: string | GradientConfig
+  patternOpacity?: number
+  patternSize?: number
+  primaryColor?: string | GradientConfig
+  secondaryColor?: string
+  image?: BackgroundImage
+  blur?: number
+  rounded?: boolean | number
+  border?: BorderConfig
+  effects?: BackgroundEffect[]
 }
 
 export interface BackgroundImage {
-  src: string;
-  opacity?: number;
-  blur?: number;
-  blend?: 'normal' | 'multiply' | 'screen' | 'overlay' | 'darken' | 'lighten';
-  position?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'cover' | 'contain';
+  src: string
+  opacity?: number
+  blur?: number
+  blend?: 'normal' | 'multiply' | 'screen' | 'overlay' | 'darken' | 'lighten'
+  position?:
+    | 'center'
+    | 'top'
+    | 'bottom'
+    | 'left'
+    | 'right'
+    | 'cover'
+    | 'contain'
 }
 
 export interface BorderConfig {
-  width?: number;
-  color?: string | GradientConfig;
-  style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'ridge';
-  radius?: number;
-  shadow?: ShadowConfig;
+  width?: number
+  color?: string | GradientConfig
+  style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'ridge'
+  radius?: number
+  shadow?: ShadowConfig
 }
 
 export interface BackgroundEffect {
-  type: 'noise' | 'scan-lines' | 'vignette' | 'grain' | 'bokeh';
-  intensity?: number;
-  color?: string;
-  blend?: string;
+  type: 'noise' | 'scan-lines' | 'vignette' | 'grain' | 'bokeh'
+  intensity?: number
+  color?: string
+  blend?: string
 }
 
 export interface GradientConfig {
-  type: 'linear' | 'radial' | 'conic' | 'mesh';
-  colors: GradientStop[];
-  angle?: number; // For linear gradients
-  center?: { x: number; y: number }; // For radial/conic
-  meshPoints?: MeshPoint[]; // For mesh gradients
+  type: 'linear' | 'radial' | 'conic' | 'mesh'
+  colors: GradientStop[]
+  angle?: number // For linear gradients
+  center?: { x: number; y: number } // For radial/conic
+  meshPoints?: MeshPoint[] // For mesh gradients
 }
 
 export interface GradientStop {
-  color: string;
-  offset: number; // 0-1
-  opacity?: number;
+  color: string
+  offset: number // 0-1
+  opacity?: number
 }
 
 export interface MeshPoint {
-  x: number;
-  y: number;
-  color: string;
-  radius: number;
+  x: number
+  y: number
+  color: string
+  radius: number
 }
 
 export interface ShadowConfig {
-  color?: string;
-  blur?: number;
-  offsetX?: number;
-  offsetY?: number;
-  spread?: number;
-  inset?: boolean;
+  color?: string
+  blur?: number
+  offsetX?: number
+  offsetY?: number
+  spread?: number
+  inset?: boolean
 }
 
 export interface GlowConfig {
-  color?: string;
-  size?: number;
-  intensity?: number;
-  animated?: boolean;
+  color?: string
+  size?: number
+  intensity?: number
+  animated?: boolean
 }
 
 export interface AnimationConfig {
-  type: AnimationType;
-  duration?: number;
-  delay?: number;
-  easing?: 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'elastic';
-  repeat?: number | 'infinite';
-  direction?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+  type: AnimationType
+  duration?: number
+  delay?: number
+  easing?:
+    | 'linear'
+    | 'ease'
+    | 'ease-in'
+    | 'ease-out'
+    | 'ease-in-out'
+    | 'bounce'
+    | 'elastic'
+  repeat?: number | 'infinite'
+  direction?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse'
   // Specific animation properties
-  amplitude?: number; // For wave, ripple
-  frequency?: number; // For pulse, wave
-  particles?: ParticleConfig; // For particle animation
+  amplitude?: number // For wave, ripple
+  frequency?: number // For pulse, wave
+  particles?: ParticleConfig // For particle animation
 }
 
 export interface ParticleConfig {
-  count?: number;
-  size?: number;
-  color?: string;
-  speed?: number;
-  direction?: 'up' | 'down' | 'left' | 'right' | 'random';
-  shape?: 'circle' | 'square' | 'star' | 'triangle';
+  count?: number
+  size?: number
+  color?: string
+  speed?: number
+  direction?: 'up' | 'down' | 'left' | 'right' | 'random'
+  shape?: 'circle' | 'square' | 'star' | 'triangle'
 }
 
 export interface FluidConfig {
-  viscosity?: number; // 0-1
-  turbulence?: number; // 0-1
-  speed?: number;
-  colors?: string[];
-  blend?: boolean;
+  viscosity?: number // 0-1
+  turbulence?: number // 0-1
+  speed?: number
+  colors?: string[]
+  blend?: boolean
 }
 
 export interface AdvancedQRStyleOptions {
-  eyes?: EyeCustomization;
-  body?: BodyCustomization;
-  background?: BackgroundCustomization;
-  animation?: AnimationConfig;
-  fluid?: FluidConfig;
+  eyes?: EyeCustomization
+  body?: BodyCustomization
+  background?: BackgroundCustomization
+  animation?: AnimationConfig
+  fluid?: FluidConfig
   effects?: {
-    global?: ColorEffect;
-    shadow?: ShadowConfig;
-    glow?: GlowConfig;
-    blur?: number;
-    brightness?: number;
-    contrast?: number;
-    saturation?: number;
-    hue?: number;
-    invert?: boolean;
-    sepia?: boolean;
-  };
+    global?: ColorEffect
+    shadow?: ShadowConfig
+    glow?: GlowConfig
+    blur?: number
+    brightness?: number
+    contrast?: number
+    saturation?: number
+    hue?: number
+    invert?: boolean
+    sepia?: boolean
+  }
   responsive?: {
-    breakpoints?: { [key: string]: Partial<AdvancedQRStyleOptions> };
-    scale?: boolean;
-    maintainAspectRatio?: boolean;
-  };
+    breakpoints?: { [key: string]: Partial<AdvancedQRStyleOptions> }
+    scale?: boolean
+    maintainAspectRatio?: boolean
+  }
   accessibility?: {
-    highContrast?: boolean;
-    colorBlindMode?: 'protanopia' | 'deuteranopia' | 'tritanopia' | 'monochrome';
-    description?: string;
-  };
+    highContrast?: boolean
+    colorBlindMode?: 'protanopia' | 'deuteranopia' | 'tritanopia' | 'monochrome'
+    description?: string
+  }
 }
 
 // Preset Themes
 export interface QRTheme {
-  name: string;
-  description?: string;
-  style: AdvancedQRStyleOptions;
+  name: string
+  description?: string
+  style: AdvancedQRStyleOptions
 }
 
 export const PRESET_THEMES: Record<string, QRTheme> = {
@@ -413,4 +427,4 @@ export const PRESET_THEMES: Record<string, QRTheme> = {
       },
     },
   },
-};
+}
