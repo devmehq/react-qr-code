@@ -9,7 +9,11 @@ import {
 } from 'react'
 import { QRCode } from '../qr/QRCode'
 import { DataEncoder } from '../utils/dataEncoder'
-import { ReactQrCodeProps, QRCodeRef, ErrorCorrectionLevel } from '../types/types'
+import {
+  ReactQrCodeProps,
+  QRCodeRef,
+  ErrorCorrectionLevel,
+} from '../types/types'
 import { QRCodeCanvas } from './QRCodeCanvas'
 import { QRCodeSVG } from './QRCodeSVG'
 import { downloadQRCode, copyQRCode } from '../utils/download'
