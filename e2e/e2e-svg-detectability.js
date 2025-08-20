@@ -257,10 +257,10 @@ async function testSVGDetectability(svgFile) {
       error: isDetectable
         ? null
         : contrastRatio < 3
-        ? 'Insufficient contrast'
-        : !hasEnoughModules
-        ? 'Too few modules'
-        : 'Invalid QR structure',
+          ? 'Insufficient contrast'
+          : !hasEnoughModules
+            ? 'Too few modules'
+            : 'Invalid QR structure',
     }
   } catch (error) {
     return {
@@ -442,7 +442,7 @@ async function generateJSONReport(results) {
  */
 async function main() {
   console.log('🚀 E2E SVG Detectability Test\n')
-  console.log('=' .repeat(60))
+  console.log('='.repeat(60))
 
   // Create directories
   await ensureDirectories()
@@ -473,7 +473,7 @@ async function main() {
     // Test detectability of each SVG
     console.log('\n🔍 Testing detectability...')
     console.log('-'.repeat(60))
-    
+
     const results = []
     for (const svg of allSVGs) {
       const result = await testSVGDetectability(svg)
