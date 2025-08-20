@@ -24,11 +24,11 @@ export const ReactQrCode = forwardRef<QRCodeRef, ReactQrCodeProps>(
     const {
       value = 'https://github.com/devmehq/react-qr-code',
       size = 256,
-      level = 'L',
+      level = 'M',
       bgColor = '#ffffff',
       fgColor = '#000000',
       renderAs = 'svg',
-      marginSize = 0,
+      marginSize = 8,
       style,
       className,
       id,

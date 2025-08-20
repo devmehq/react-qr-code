@@ -12,7 +12,7 @@ const Home = () => (
     <p style={{ fontSize: '1.2rem', marginBottom: '50px', opacity: 0.9 }}>
       The most powerful QR code generator for React
     </p>
-    
+
     {/* Basic Examples */}
     <div style={{ marginBottom: '60px' }}>
       <h2 style={{ marginBottom: '30px' }}>Basic Examples</h2>

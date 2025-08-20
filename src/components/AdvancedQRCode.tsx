@@ -19,10 +19,10 @@ export const AdvancedQRCode = forwardRef<QRCodeRef, AdvancedQRCodeProps>(
     const {
       value = 'https://github.com/devmehq/react-qr-code',
       size = 256,
-      level = 'L',
+      level = 'M',
       bgColor = '#ffffff',
       fgColor = '#000000',
-      marginSize = 0,
+      marginSize = 8,
       style,
       className,
       id,

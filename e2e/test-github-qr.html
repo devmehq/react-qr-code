@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test GitHub QR Code</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 { color: #333; margin-bottom: 10px; }
+        p { color: #666; margin-bottom: 30px; }
+        .qr-wrapper {
+            display: inline-block;
+            padding: 20px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GitHub URL QR Code Test</h1>
+        <p>URL: https://github.com/devmehq/react-qr-code</p>
+        <p>This should be scannable and open the GitHub repo</p>
+        
+        <div class="qr-wrapper">
+            <div id="qr-basic"></div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <h3>With higher error correction:</h3>
+            <div class="qr-wrapper">
+                <div id="qr-high"></div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <h3>Larger size (better for scanning):</h3>
+            <div class="qr-wrapper">
+                <div id="qr-large"></div>
+            </div>
+        </div>
+    </div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="../dist/index.umd.js"></script>
+    
+    <script>
+        const { ReactQrCode } = window.ReactQrCode;
+        const e = React.createElement;
+        
+        // Basic QR (same as in examples)
+        const root1 = ReactDOM.createRoot(document.getElementById('qr-basic'));
+        root1.render(e(ReactQrCode, {
+            value: "https://github.com/devmehq/react-qr-code",
+            size: 140,
+            bgColor: "#ffffff",
+            fgColor: "#000000",
+            level: "L"
+        }));
+        
+        // High error correction
+        const root2 = ReactDOM.createRoot(document.getElementById('qr-high'));
+        root2.render(e(ReactQrCode, {
+            value: "https://github.com/devmehq/react-qr-code",
+            size: 140,
+            bgColor: "#ffffff",
+            fgColor: "#000000",
+            level: "H"
+        }));
+        
+        // Larger size for better scanning
+        const root3 = ReactDOM.createRoot(document.getElementById('qr-large'));
+        root3.render(e(ReactQrCode, {
+            value: "https://github.com/devmehq/react-qr-code",
+            size: 256,
+            bgColor: "#ffffff",
+            fgColor: "#000000",
+            level: "M",
+            includeMargin: true
+        }));
+    </script>
+</body>
+</html>

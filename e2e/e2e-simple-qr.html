@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple QR Code Test</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="./dist/index.umd.js"></script>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        padding: 40px;
+        background: #f5f5f5;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .qr-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+      }
+      .qr-item {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .qr-item h3 {
+        margin-top: 0;
+        color: #333;
+      }
+      .qr-item pre {
+        text-align: left;
+        background: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        overflow-x: auto;
+      }
+      .status {
+        margin-top: 10px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .status.success {
+        background: #d4edda;
+        color: #155724;
+      }
+      .status.error {
+        background: #f8d7da;
+        color: #721c24;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Simple QR Code Detectability Test</h1>
+      <p>
+        Testing the basic ReactQrCode component with different color
+        combinations
+      </p>
+
+      <div class="qr-grid">
+        <!-- Test 1: Default (should work) -->
+        <div class="qr-item">
+          <h3>Test 1: Default Colors</h3>
+          <div id="test1"></div>
+          <pre>
+fgColor: "#000000"
+bgColor: "#ffffff"</pre
+          >
+          <div class="status" id="status1">Testing...</div>
+        </div>
+
+        <!-- Test 2: Without explicit colors -->
+        <div class="qr-item">
+          <h3>Test 2: No Color Props</h3>
+          <div id="test2"></div>
+          <pre>No color props specified</pre>
+          <div class="status" id="status2">Testing...</div>
+        </div>
+
+        <!-- Test 3: High contrast -->
+        <div class="qr-item">
+          <h3>Test 3: High Contrast</h3>
+          <div id="test3"></div>
+          <pre>
+fgColor: "#000000"
+bgColor: "#ffffff"</pre
+          >
+          <div class="status" id="status3">Testing...</div>
+        </div>
+
+        <!-- Test 4: Inverted -->
+        <div class="qr-item">
+          <h3>Test 4: Inverted Colors</h3>
+          <div id="test4"></div>
+          <pre>
+fgColor: "#ffffff"
+bgColor: "#000000"</pre
+          >
+          <div class="status" id="status4">Testing...</div>
+        </div>
+
+        <!-- Test 5: Blue on white -->
+        <div class="qr-item">
+          <h3>Test 5: Blue on White</h3>
+          <div id="test5"></div>
+          <pre>
+fgColor: "#0000ff"
+bgColor: "#ffffff"</pre
+          >
+          <div class="status" id="status5">Testing...</div>
+        </div>
+
+        <!-- Test 6: Dark gray on white -->
+        <div class="qr-item">
+          <h3>Test 6: Dark Gray</h3>
+          <div id="test6"></div>
+          <pre>
+fgColor: "#333333"
+bgColor: "#ffffff"</pre
+          >
+          <div class="status" id="status6">Testing...</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const { ReactQrCode } = ReactQRCode
+      const testUrl = 'https://github.com/devmehq/react-qr-code'
+
+      // Test 1: Default colors
+      ReactDOM.render(
+        React.createElement(ReactQrCode, {
+          value: testUrl,
+          size: 256,
+          fgColor: '#000000',
+          bgColor: '#ffffff',
+          level: 'M',
+        }),
+        document.getElementById('test1')
+      )
+
+      // Test 2: No color props (using defaults)
+      ReactDOM.render(
+        React.createElement(ReactQrCode, {
+          value: testUrl,
+          size: 256,
+          level: 'M',
+        }),
+        document.getElementById('test2')
+      )
+
+      // Test 3: High contrast
+      ReactDOM.render(
+        React.createElement(ReactQrCode, {
+          value: testUrl,
+          size: 256,
+          fgColor: '#000000',
+          bgColor: '#ffffff',
+          level: 'H',
+        }),
+        document.getElementById('test3')
+      )
+
+      // Test 4: Inverted
+      ReactDOM.render(
+        React.createElement(ReactQrCode, {
+          value: testUrl,
+          size: 256,
+          fgColor: '#ffffff',
+          bgColor: '#000000',
+          level: 'M',
+        }),
+        document.getElementById('test4')
+      )
+
+      // Test 5: Blue on white
+      ReactDOM.render(
+        React.createElement(ReactQrCode, {
+          value: testUrl,
+          size: 256,
+          fgColor: '#0000ff',
+          bgColor: '#ffffff',
+          level: 'M',
+        }),
+        document.getElementById('test5')
+      )
+
+      // Test 6: Dark gray
+      ReactDOM.render(
+        React.createElement(ReactQrCode, {
+          value: testUrl,
+          size: 256,
+          fgColor: '#333333',
+          bgColor: '#ffffff',
+          level: 'M',
+        }),
+        document.getElementById('test6')
+      )
+
+      // Check contrast ratios
+      function getContrastRatio(fg, bg) {
+        // Convert hex to RGB
+        const hexToRgb = (hex) => {
+          const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+          return result
+            ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16),
+              }
+            : null
+        }
+
+        // Calculate relative luminance
+        const getLuminance = (rgb) => {
+          const rsRGB = rgb.r / 255
+          const gsRGB = rgb.g / 255
+          const bsRGB = rgb.b / 255
+
+          const r =
+            rsRGB <= 0.03928
+              ? rsRGB / 12.92
+              : Math.pow((rsRGB + 0.055) / 1.055, 2.4)
+          const g =
+            gsRGB <= 0.03928
+              ? gsRGB / 12.92
+              : Math.pow((gsRGB + 0.055) / 1.055, 2.4)
+          const b =
+            bsRGB <= 0.03928
+              ? bsRGB / 12.92
+              : Math.pow((bsRGB + 0.055) / 1.055, 2.4)
+
+          return 0.2126 * r + 0.7152 * g + 0.0722 * b
+        }
+
+        const fgRgb = hexToRgb(fg)
+        const bgRgb = hexToRgb(bg)
+
+        const fgLum = getLuminance(fgRgb)
+        const bgLum = getLuminance(bgRgb)
+
+        const lighter = Math.max(fgLum, bgLum)
+        const darker = Math.min(fgLum, bgLum)
+
+        return (lighter + 0.05) / (darker + 0.05)
+      }
+
+      // Update status based on contrast
+      setTimeout(() => {
+        const tests = [
+          { fg: '#000000', bg: '#ffffff', id: 'status1' },
+          { fg: '#000000', bg: '#ffffff', id: 'status2' },
+          { fg: '#000000', bg: '#ffffff', id: 'status3' },
+          { fg: '#ffffff', bg: '#000000', id: 'status4' },
+          { fg: '#0000ff', bg: '#ffffff', id: 'status5' },
+          { fg: '#333333', bg: '#ffffff', id: 'status6' },
+        ]
+
+        tests.forEach((test) => {
+          const ratio = getContrastRatio(test.fg, test.bg)
+          const status = document.getElementById(test.id)
+          if (ratio >= 3) {
+            status.className = 'status success'
+            status.textContent = `✓ Detectable (Contrast: ${ratio.toFixed(1)}:1)`
+          } else {
+            status.className = 'status error'
+            status.textContent = `✗ Not Detectable (Contrast: ${ratio.toFixed(1)}:1)`
+          }
+        })
+      }, 1000)
+    </script>
+  </body>
+</html>

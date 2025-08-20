@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <title>QR Test</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="./dist/index.umd.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div
+      id="svg-output"
+      style="margin-top: 20px; padding: 20px; background: #f0f0f0"
+    >
+      <h3>SVG Source:</h3>
+      <pre
+        id="svg-source"
+        style="white-space: pre-wrap; word-wrap: break-word"
+      ></pre>
+    </div>
+
+    <script>
+      const { ReactQrCode } = ReactQRCode
+
+      // Create element with explicit black and white
+      const qrElement = React.createElement(ReactQrCode, {
+        value: 'TEST',
+        size: 256,
+        fgColor: '#000000',
+        bgColor: '#ffffff',
+        level: 'L',
+      })
+
+      ReactDOM.render(qrElement, document.getElementById('root'))
+
+      // Extract SVG after render
+      setTimeout(() => {
+        const svg = document.querySelector('svg')
+        if (svg) {
+          const svgString = new XMLSerializer().serializeToString(svg)
+          document.getElementById('svg-source').textContent = svgString
+
+          // Check for issues
+          console.log('SVG found')
+          console.log('Background rect:', svg.querySelector('rect'))
+          console.log('Modules:', svg.querySelectorAll('path, rect').length)
+
+          // Check fill colors
+          const rects = svg.querySelectorAll('rect')
+          const paths = svg.querySelectorAll('path')
+
+          console.log(
+            'Rect fills:',
+            Array.from(rects).map((r) => r.getAttribute('fill'))
+          )
+          console.log(
+            'Path fills:',
+            Array.from(paths).map((p) => p.getAttribute('fill'))
+          )
+        }
+      }, 1000)
+    </script>
+  </body>
+</html>
