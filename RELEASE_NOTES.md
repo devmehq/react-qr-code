@@ -7,13 +7,16 @@ We're thrilled to announce the release of React QR Code v2.0, a complete reimagi
 ## 🎯 Key Highlights
 
 ### 🎨 100+ Customization Options
+
 Transform boring black and white QR codes into stunning visual elements that match your brand:
+
 - **25+ professionally designed preset themes**
 - **12+ eye shapes** and **18+ body shapes**
 - **Advanced gradients** including linear, radial, conic, and mesh
 - **Animated effects** with particle systems
 
 ### 🧩 New Advanced Component
+
 ```tsx
 <AdvancedQRCode
   value="https://your-site.com"
@@ -25,7 +28,9 @@ Transform boring black and white QR codes into stunning visual elements that mat
 ```
 
 ### 📱 QR Code Templates
+
 Generate specialized QR codes with built-in helpers:
+
 ```tsx
 // WiFi auto-connect
 <AdvancedQRCode value={QRHelpers.wifi('Network', 'pass123', 'WPA2')} />
@@ -38,11 +43,13 @@ Generate specialized QR codes with built-in helpers:
 ```
 
 ### ♿ Accessibility First
+
 - **Color blind modes** for all types of color vision deficiency
 - **High contrast mode** ensuring 7:1+ contrast ratios
 - **Full ARIA support** with keyboard navigation
 
 ### 🚀 Performance Improvements
+
 - **50% faster** generation with optimized algorithms
 - **30% smaller** bundle size with tree-shaking
 - **React 18** concurrent features support
@@ -59,12 +66,14 @@ yarn add @devmehq/react-qr-code@2.0.0
 ## 🔄 Migration from v1.x
 
 ### No Breaking Changes for Basic Usage
+
 ```tsx
 // This still works exactly as before!
 <ReactQrCode value="https://example.com" />
 ```
 
 ### Enhanced with New Features
+
 ```tsx
 // Use the new advanced component for more options
 <AdvancedQRCode
@@ -84,13 +93,15 @@ yarn add @devmehq/react-qr-code@2.0.0
 ## 📸 Visual Examples
 
 ### Preset Themes
-| Minimal | Ocean | Sunset | Neon |
-|---------|-------|--------|------|
+
+| Minimal   | Ocean      | Sunset         | Neon        |
+| --------- | ---------- | -------------- | ----------- |
 | Clean B&W | Deep blues | Warm gradients | Cyber green |
 
 ### Custom Shapes
-| Circle | Diamond | Star | Fluid |
-|--------|---------|------|-------|
+
+| Circle      | Diamond      | Star           | Fluid        |
+| ----------- | ------------ | -------------- | ------------ |
 | Smooth dots | Sharp angles | Stellar design | Organic flow |
 
 ## 🧪 What's Been Tested
@@ -104,6 +115,7 @@ yarn add @devmehq/react-qr-code@2.0.0
 ## 🎉 Community Contributions
 
 This release wouldn't have been possible without the amazing feedback from our community:
+
 - Special thanks for detectability testing and contrast ratio feedback
 - UI/UX suggestions that shaped the preset themes
 - Performance optimization ideas
@@ -119,6 +131,7 @@ This release wouldn't have been possible without the amazing feedback from our c
 ## 🐛 Report Issues
 
 Found a bug or have a feature request? Please let us know:
+
 - **[GitHub Issues](https://github.com/devmehq/react-qr-code/issues)**
 - **[Discussions](https://github.com/devmehq/react-qr-code/discussions)**
 

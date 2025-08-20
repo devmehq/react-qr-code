@@ -11,6 +11,7 @@ This release represents a complete transformation of the React QR Code library, 
 ### ✨ New Features
 
 #### Advanced QR Code Component
+
 - **NEW: `AdvancedQRCode` component** with 100+ customization options
 - **25+ Preset Themes**: Professional designs including minimal, gradient, ocean, sunset, forest, neon, cyberpunk, retrowave, and more
 - **12+ Eye Shapes**: square, circle, rounded, leaf, star, diamond, flower, heart, octagon, hexagon, cross, gear
@@ -18,17 +19,20 @@ This release represents a complete transformation of the React QR Code library, 
 - **12+ Background Patterns**: dots, lines, grid, mesh, circuit, waves, noise, gradient, radial, hexagon, triangle
 
 #### Gradient Support
+
 - **Linear Gradients**: Customizable angle and color stops
 - **Radial Gradients**: Center point and radius control
 - **Conic Gradients**: Angular color transitions
 - **Mesh Gradients**: Advanced multi-point gradients
 
 #### Animation & Effects
+
 - **Animation Types**: fade-in, scale, rotate, slide, bounce, pulse, wave, ripple
 - **Visual Effects**: shadow, glow, blur, 3D, emboss, neon, metallic, glass, chrome, holographic
 - **Particle Animations**: Configurable particle effects with custom shapes and directions
 
 #### QR Code Templates
+
 - **WiFi Networks**: Auto-connect QR codes with WPA/WPA2/WEP support
 - **vCard Contacts**: Complete contact information including organization
 - **SMS Messages**: Pre-filled text messages
@@ -38,12 +42,14 @@ This release represents a complete transformation of the React QR Code library, 
 - **Cryptocurrency**: Bitcoin and Ethereum payment QR codes
 
 #### Accessibility & UX
+
 - **Color Blind Modes**: Support for protanopia, deuteranopia, tritanopia, and monochrome
 - **High Contrast Mode**: Ensures QR code detectability
 - **ARIA Support**: Full keyboard navigation and screen reader compatibility
 - **Download & Copy**: Built-in functionality for saving and clipboard operations
 
 #### Developer Experience
+
 - **TypeScript Strict Mode**: Complete type safety with comprehensive interfaces
 - **Tree-Shakable**: Optimized bundle size with ESM support
 - **React 18+ Support**: Hooks, forwardRef, and concurrent features
@@ -52,18 +58,21 @@ This release represents a complete transformation of the React QR Code library, 
 ### 🔧 Improvements
 
 #### Code Quality
+
 - **ES6+ Classes**: Migrated from function constructors to modern class syntax
 - **React Hooks**: Implemented useMemo, useCallback, useRef for performance
 - **Memoization**: Optimized re-renders with React.memo and useMemo
 - **Code Splitting**: Lazy loading for advanced features
 
 #### Testing
+
 - **100% Test Coverage**: Comprehensive unit tests for all components
 - **E2E Testing**: Puppeteer-based detectability tests
 - **QR Validation**: Built-in decoder for testing generated QR codes
 - **Visual Regression**: Screenshot-based testing for all themes
 
 #### Documentation
+
 - **Interactive Examples**: Live demos with 100+ variations
 - **API Documentation**: Complete TypeScript interfaces and prop documentation
 - **Usage Guides**: Step-by-step tutorials for common use cases
@@ -88,7 +97,7 @@ This release represents a complete transformation of the React QR Code library, 
 
 - **Minimum React Version**: Now requires React 16.8+ (hooks support)
 - **Import Path Changes**: Advanced types now imported from `@devmehq/react-qr-code`
-- **Prop Renames**: 
+- **Prop Renames**:
   - `bgColor` → `backgroundColor`
   - `fgColor` → `color` or use theme system
   - `includeMargin` → `margin` (number value)
@@ -98,22 +107,24 @@ This release represents a complete transformation of the React QR Code library, 
 #### From v1.x to v2.0
 
 **Basic Usage (no changes required):**
+
 ```tsx
 // Still works as before
 <ReactQrCode value="https://example.com" />
 ```
 
 **Advanced Features (new component):**
+
 ```tsx
 // OLD (v1.x)
-<ReactQrCode 
+<ReactQrCode
   value="https://example.com"
   bgColor="#ffffff"
   fgColor="#000000"
 />
 
 // NEW (v2.0) - Basic
-<ReactQrCode 
+<ReactQrCode
   value="https://example.com"
   backgroundColor="#ffffff"
   color="#000000"
