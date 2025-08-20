@@ -94,7 +94,7 @@
     "qr-scanner": "1.4.2",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "rollup": "4.46.3",
+    "rollup": "4.46.4",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-visualizer": "6.0.3",
     "ts-jest": "29.4.1",
