@@ -21,6 +21,7 @@
 - 📦 **Lightweight**: Zero dependencies, small bundle size
 - 🔧 **TypeScript**: Full TypeScript support
 - ⚡ **Performance**: Optimized rendering with React hooks
+
 ## 📦 Installation
 
 ```bash
@@ -39,21 +40,19 @@ pnpm add @devmehq/react-qr-code
 ### Basic Usage
 
 ```tsx
-import React from 'react';
-import { ReactQrCode } from '@devmehq/react-qr-code';
+import React from 'react'
+import { ReactQrCode } from '@devmehq/react-qr-code'
 
 function App() {
-  return (
-    <ReactQrCode value="https://github.com/devmehq/react-qr-code" />
-  );
+  return <ReactQrCode value="https://github.com/devmehq/react-qr-code" />
 }
 ```
 
 ### With Custom Styling
 
 ```tsx
-import React from 'react';
-import { ReactQrCode } from '@devmehq/react-qr-code';
+import React from 'react'
+import { ReactQrCode } from '@devmehq/react-qr-code'
 
 function StyledQRCode() {
   return (
@@ -67,15 +66,15 @@ function StyledQRCode() {
       style={{ borderRadius: '8px' }}
       className="shadow-lg"
     />
-  );
+  )
 }
 ```
 
 ### Canvas Rendering
 
 ```tsx
-import React from 'react';
-import { ReactQrCode } from '@devmehq/react-qr-code';
+import React from 'react'
+import { ReactQrCode } from '@devmehq/react-qr-code'
 
 function CanvasQRCode() {
   return (
@@ -84,15 +83,15 @@ function CanvasQRCode() {
       renderAs="canvas"
       size={256}
     />
-  );
+  )
 }
 ```
 
 ### With Logo/Image
 
 ```tsx
-import React from 'react';
-import { ReactQrCode } from '@devmehq/react-qr-code';
+import React from 'react'
+import { ReactQrCode } from '@devmehq/react-qr-code'
 
 function QRCodeWithLogo() {
   return (
@@ -108,7 +107,7 @@ function QRCodeWithLogo() {
         },
       ]}
     />
-  );
+  )
 }
 ```
 
@@ -116,48 +115,48 @@ function QRCodeWithLogo() {
 
 ### ReactQrCode Props
 
-| Prop         | Type                         | Default       | Description                                          |
-|--------------|------------------------------|---------------|------------------------------------------------------|
-| `value`      | `string`                     | **Required**  | The value to encode in the QR code                  |
-| `renderAs`   | `'svg' \| 'canvas'`          | `'svg'`       | Render format (SVG or Canvas)                       |
-| `size`       | `number`                     | `256`         | Size of the QR code in pixels                       |
-| `bgColor`    | `string`                     | `'#ffffff'`   | Background color (CSS color value)                  |
-| `fgColor`    | `string`                     | `'#000000'`   | Foreground color (CSS color value)                  |
-| `level`      | `'L' \| 'M' \| 'Q' \| 'H'`   | `'L'`         | Error correction level                              |
-| `marginSize` | `number`                     | `0`           | Margin around the QR code in pixels                 |
-| `style`      | `CSSProperties`              | `undefined`   | React style object                                  |
-| `className`  | `string`                     | `undefined`   | CSS class name                                      |
-| `title`      | `string`                     | `undefined`   | Title for SVG accessibility                         |
-| `id`         | `string`                     | `undefined`   | HTML id attribute                                   |
-| `images`     | `ReactQrCodeImageProps[]`    | `undefined`   | Array of images to embed in the QR code             |
+| Prop         | Type                       | Default      | Description                             |
+| ------------ | -------------------------- | ------------ | --------------------------------------- |
+| `value`      | `string`                   | **Required** | The value to encode in the QR code      |
+| `renderAs`   | `'svg' \| 'canvas'`        | `'svg'`      | Render format (SVG or Canvas)           |
+| `size`       | `number`                   | `256`        | Size of the QR code in pixels           |
+| `bgColor`    | `string`                   | `'#ffffff'`  | Background color (CSS color value)      |
+| `fgColor`    | `string`                   | `'#000000'`  | Foreground color (CSS color value)      |
+| `level`      | `'L' \| 'M' \| 'Q' \| 'H'` | `'L'`        | Error correction level                  |
+| `marginSize` | `number`                   | `0`          | Margin around the QR code in pixels     |
+| `style`      | `CSSProperties`            | `undefined`  | React style object                      |
+| `className`  | `string`                   | `undefined`  | CSS class name                          |
+| `title`      | `string`                   | `undefined`  | Title for SVG accessibility             |
+| `id`         | `string`                   | `undefined`  | HTML id attribute                       |
+| `images`     | `ReactQrCodeImageProps[]`  | `undefined`  | Array of images to embed in the QR code |
 
 ### ReactQrCodeImageProps
 
-| Property   | Type      | Default           | Description                                    |
-|------------|-----------|-------------------|------------------------------------------------|
-| `src`      | `string`  | **Required**      | Image source URL                              |
-| `x`        | `number`  | Auto-centered     | X position of the image                       |
-| `y`        | `number`  | Auto-centered     | Y position of the image                       |
-| `height`   | `number`  | 10% of QR size    | Height of the image                           |
-| `width`    | `number`  | 10% of QR size    | Width of the image                            |
-| `excavate` | `boolean` | `false`           | Whether to clear QR modules behind the image  |
+| Property   | Type      | Default        | Description                                  |
+| ---------- | --------- | -------------- | -------------------------------------------- |
+| `src`      | `string`  | **Required**   | Image source URL                             |
+| `x`        | `number`  | Auto-centered  | X position of the image                      |
+| `y`        | `number`  | Auto-centered  | Y position of the image                      |
+| `height`   | `number`  | 10% of QR size | Height of the image                          |
+| `width`    | `number`  | 10% of QR size | Width of the image                           |
+| `excavate` | `boolean` | `false`        | Whether to clear QR modules behind the image |
 
 ### Error Correction Levels
 
 | Level | Error Correction | Data Capacity |
-|-------|-----------------|---------------|
-| `L`   | ~7%             | High          |
-| `M`   | ~15%            | Medium        |
-| `Q`   | ~25%            | Medium-Low    |
-| `H`   | ~30%            | Low           |
+| ----- | ---------------- | ------------- |
+| `L`   | ~7%              | High          |
+| `M`   | ~15%             | Medium        |
+| `Q`   | ~25%             | Medium-Low    |
+| `H`   | ~30%             | Low           |
 
 ## 🎨 Styling & Customization
 
 ### Responsive Design
 
 ```tsx
-import React from 'react';
-import { ReactQrCode } from '@devmehq/react-qr-code';
+import React from 'react'
+import { ReactQrCode } from '@devmehq/react-qr-code'
 
 function ResponsiveQRCode() {
   return (
@@ -168,15 +167,15 @@ function ResponsiveQRCode() {
         style={{ width: '100%', height: 'auto' }}
       />
     </div>
-  );
+  )
 }
 ```
 
 ### Dark Mode Support
 
 ```tsx
-import React from 'react';
-import { ReactQrCode } from '@devmehq/react-qr-code';
+import React from 'react'
+import { ReactQrCode } from '@devmehq/react-qr-code'
 
 function DarkModeQRCode({ isDarkMode }) {
   return (
@@ -185,16 +184,16 @@ function DarkModeQRCode({ isDarkMode }) {
       bgColor={isDarkMode ? '#1f2937' : '#ffffff'}
       fgColor={isDarkMode ? '#f3f4f6' : '#000000'}
     />
-  );
+  )
 }
 ```
 
 ### Custom CSS Classes
 
 ```tsx
-import React from 'react';
-import { ReactQrCode } from '@devmehq/react-qr-code';
-import './styles.css';
+import React from 'react'
+import { ReactQrCode } from '@devmehq/react-qr-code'
+import './styles.css'
 
 function CustomStyledQRCode() {
   return (
@@ -203,7 +202,7 @@ function CustomStyledQRCode() {
       className="qr-code-custom"
       size={300}
     />
-  );
+  )
 }
 ```
 
@@ -225,15 +224,9 @@ function CustomStyledQRCode() {
 
 ```tsx
 function WiFiQRCode({ ssid, password, security = 'WPA' }) {
-  const wifiString = `WIFI:T:${security};S:${ssid};P:${password};;`;
-  
-  return (
-    <ReactQrCode
-      value={wifiString}
-      size={256}
-      level="H"
-    />
-  );
+  const wifiString = `WIFI:T:${security};S:${ssid};P:${password};;`
+
+  return <ReactQrCode value={wifiString} size={256} level="H" />
 }
 ```
 
@@ -246,15 +239,9 @@ VERSION:3.0
 FN:${name}
 TEL:${phone}
 EMAIL:${email}
-END:VCARD`;
-  
-  return (
-    <ReactQrCode
-      value={vCard}
-      size={256}
-      level="M"
-    />
-  );
+END:VCARD`
+
+  return <ReactQrCode value={vCard} size={256} level="M" />
 }
 ```
 
@@ -262,8 +249,8 @@ END:VCARD`;
 
 ```tsx
 function TwoFactorQRCode({ secret, issuer, accountName }) {
-  const otpauth = `otpauth://totp/${issuer}:${accountName}?secret=${secret}&issuer=${issuer}`;
-  
+  const otpauth = `otpauth://totp/${issuer}:${accountName}?secret=${secret}&issuer=${issuer}`
+
   return (
     <ReactQrCode
       value={otpauth}
@@ -278,7 +265,7 @@ function TwoFactorQRCode({ secret, issuer, accountName }) {
         },
       ]}
     />
-  );
+  )
 }
 ```
 
@@ -286,21 +273,13 @@ function TwoFactorQRCode({ secret, issuer, accountName }) {
 
 ```tsx
 function PaymentQRCode({ amount, recipient, currency = 'USD' }) {
-  const paymentLink = `https://pay.example.com/?to=${recipient}&amount=${amount}&currency=${currency}`;
-  
-  return (
-    <ReactQrCode
-      value={paymentLink}
-      size={300}
-      level="H"
-      marginSize={4}
-    />
-  );
+  const paymentLink = `https://pay.example.com/?to=${recipient}&amount=${amount}&currency=${currency}`
+
+  return <ReactQrCode value={paymentLink} size={300} level="H" marginSize={4} />
 }
 ```
 
 <img src="https://github.com/devmehq/react-qr-code/raw/master/examples/qrcode-demo.png" alt="qrcode-demo">
-
 
 ## 🧪 Testing
 
