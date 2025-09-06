@@ -4,7 +4,7 @@ import { QRRSBlock } from './qr-rs-block'
 import { QrBitBuffer } from './qr-bit-buffer'
 import { QRPolynomial } from './qr-polynomial'
 
-function JsQrCode(typeNumber: any, errorCorrectLevel: any) {
+function JsQrCode(typeNumber: number, errorCorrectLevel: number) {
   this.typeNumber = typeNumber
   this.errorCorrectLevel = errorCorrectLevel
   this.modules = null
