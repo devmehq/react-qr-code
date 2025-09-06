@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useEffect, useRef, CSSProperties } from 'react'
 import { JsQrCode } from './qr-js/js-qr-code'
 import { qrErrorCorrectLevel } from './qr-js/qr-error-correct-level'
+
+interface QRCodePathProps {
+  d: string
+  fill: string
+  transformX: number
+  transformY: number
+}
 
 function QRCodePath({
   d,
   fill,
   transformX,
   transformY,
-}: {
-  d: string
-  fill: string
-  transformX: number
-  transformY: number
-}) {
+}: QRCodePathProps): React.ReactElement {
   return (
     <path
       d={d}
@@ -22,18 +24,22 @@ function QRCodePath({
   )
 }
 
+interface QRCodeSvgProps {
+  children: React.ReactNode
+  size: number
+  title?: string
+  xmlns?: string
+  style?: CSSProperties
+  className?: string
+}
+
 function QRCodeSvg({
   children,
   size,
   title,
-  xmlns,
+  xmlns = 'http://www.w3.org/2000/svg',
   ...props
-}: {
-  children: any
-  size: number
-  title?: string
-  xmlns?: string
-}) {
+}: QRCodeSvgProps): React.ReactElement {
   return (
     <svg {...props} height={size} width={size} xmlns={xmlns}>
       {title ? <title>{title}</title> : null}
@@ -42,29 +48,93 @@ function QRCodeSvg({
   )
 }
 
-export type ReactQrCodeImageProps = {
-  // todo implement
+export interface ReactQrCodeImageProps {
   src: string
-  height: number
-  width: number
+  height?: number
+  width?: number
   excavate?: boolean
   x?: number
   y?: number
 }
 
-export type ReactQrCodeProps = {
+export interface ReactQrCodeProps {
   value: string
   size?: number
   level?: 'L' | 'M' | 'Q' | 'H'
   bgColor?: string
   fgColor?: string
-  marginSize?: number // todo implement
-  style?: Record<string, string> // todo implement
-  renderAs?: 'svg' | 'canvas' // todo implement
+  marginSize?: number
+  style?: CSSProperties
+  renderAs?: 'svg' | 'canvas'
   images?: ReactQrCodeImageProps[]
+  title?: string
+  className?: string
+  id?: string
 }
 
-export function ReactQrCode(props: ReactQrCodeProps) {
+function drawQRCodeCanvas(
+  canvas: HTMLCanvasElement,
+  cells: boolean[][],
+  size: number,
+  marginSize: number,
+  bgColor: string,
+  fgColor: string,
+  images?: ReactQrCodeImageProps[]
+): void {
+  const ctx = canvas.getContext('2d')
+  if (!ctx) return
+
+  const scale = window.devicePixelRatio || 1
+  canvas.width = size * scale
+  canvas.height = size * scale
+  ctx.scale(scale, scale)
+
+  const actualSize = size - marginSize * 2
+  const tileSize = actualSize / cells.length
+
+  ctx.fillStyle = bgColor
+  ctx.fillRect(0, 0, size, size)
+
+  cells.forEach((row, rowIndex) => {
+    row.forEach((cell, cellIndex) => {
+      if (cell) {
+        ctx.fillStyle = fgColor
+        const x = marginSize + cellIndex * tileSize
+        const y = marginSize + rowIndex * tileSize
+        ctx.fillRect(
+          Math.round(x),
+          Math.round(y),
+          Math.ceil(tileSize),
+          Math.ceil(tileSize)
+        )
+      }
+    })
+  })
+
+  if (images && images.length > 0) {
+    images.forEach((imageProps) => {
+      const img = new Image()
+      img.onload = () => {
+        const imgWidth = imageProps.width || size * 0.1
+        const imgHeight = imageProps.height || size * 0.1
+        const imgX =
+          imageProps.x !== undefined ? imageProps.x : (size - imgWidth) / 2
+        const imgY =
+          imageProps.y !== undefined ? imageProps.y : (size - imgHeight) / 2
+
+        if (imageProps.excavate) {
+          ctx.fillStyle = bgColor
+          ctx.fillRect(imgX - 5, imgY - 5, imgWidth + 10, imgHeight + 10)
+        }
+
+        ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight)
+      }
+      img.src = imageProps.src
+    })
+  }
+}
+
+export function ReactQrCode(props: ReactQrCodeProps): React.ReactElement {
   const {
     bgColor = '#ffffff',
     fgColor = '#000000',
@@ -73,27 +143,78 @@ export function ReactQrCode(props: ReactQrCodeProps) {
     value = 'https://github.com/devmehq/react-qr-code',
     marginSize = 0,
     renderAs = 'svg',
+    images,
+    title,
+    style,
+    className,
+    id,
     ...rest
   } = props
-  // We'll use type === -1 to force JsQrCode to automatically pick the best type.
+
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
   const qrcode = new JsQrCode(-1, qrErrorCorrectLevel[level])
   qrcode.addData(value)
   qrcode.make()
   const cells = qrcode.modules
-  const tileSize = size / cells.length
+
+  useEffect(() => {
+    if (renderAs === 'canvas' && canvasRef.current) {
+      drawQRCodeCanvas(
+        canvasRef.current,
+        cells,
+        size,
+        marginSize,
+        bgColor,
+        fgColor,
+        images
+      )
+    }
+  }, [renderAs, cells, size, marginSize, bgColor, fgColor, images])
+
+  if (renderAs === 'canvas') {
+    return (
+      <canvas
+        ref={canvasRef}
+        style={{
+          height: size,
+          width: size,
+          ...style,
+        }}
+        className={className}
+        id={id}
+        {...rest}
+      />
+    )
+  }
+
+  const actualSize = size - marginSize * 2
+  const tileSize = actualSize / cells.length
+
   return (
-    <QRCodeSvg {...rest} size={size}>
-      {cells.map((row: any[], rowIndex: number) =>
+    <QRCodeSvg
+      {...rest}
+      size={size}
+      title={title}
+      style={style}
+      className={className}
+    >
+      {marginSize > 0 && (
+        <rect x="0" y="0" width={size} height={size} fill={bgColor} />
+      )}
+      {cells.map((row: boolean[], rowIndex: number) =>
         row.map((cell, cellIndex) => {
           const fill = cell ? fgColor : bgColor
-          const transformX = Math.round(cellIndex * tileSize)
-          const transformY = Math.round(rowIndex * tileSize)
+          const transformX = marginSize + Math.round(cellIndex * tileSize)
+          const transformY = marginSize + Math.round(rowIndex * tileSize)
           const qrItemWidth =
-            Math.round((cellIndex + 1) * tileSize) - transformX
+            Math.round((cellIndex + 1) * tileSize) -
+            Math.round(cellIndex * tileSize)
           const qrItemHeight =
-            Math.round((rowIndex + 1) * tileSize) - transformY
+            Math.round((rowIndex + 1) * tileSize) -
+            Math.round(rowIndex * tileSize)
           const d = `M 0 0 L ${qrItemWidth} 0 L ${qrItemWidth} ${qrItemHeight} L 0 ${qrItemHeight} Z`
-          return (
+          return cell ? (
             <QRCodePath
               key={`rectangle-${rowIndex}-${cellIndex}`}
               d={d}
@@ -101,9 +222,38 @@ export function ReactQrCode(props: ReactQrCodeProps) {
               transformX={transformX}
               transformY={transformY}
             />
-          )
+          ) : null
         })
       )}
+      {images?.map((imageProps, index) => {
+        const imgWidth = imageProps.width || size * 0.1
+        const imgHeight = imageProps.height || size * 0.1
+        const imgX =
+          imageProps.x !== undefined ? imageProps.x : (size - imgWidth) / 2
+        const imgY =
+          imageProps.y !== undefined ? imageProps.y : (size - imgHeight) / 2
+
+        return (
+          <g key={`image-${index}`}>
+            {imageProps.excavate && (
+              <rect
+                x={imgX - 5}
+                y={imgY - 5}
+                width={imgWidth + 10}
+                height={imgHeight + 10}
+                fill={bgColor}
+              />
+            )}
+            <image
+              href={imageProps.src}
+              x={imgX}
+              y={imgY}
+              width={imgWidth}
+              height={imgHeight}
+            />
+          </g>
+        )
+      })}
     </QRCodeSvg>
   )
 }
