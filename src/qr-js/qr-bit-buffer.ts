@@ -20,7 +20,7 @@ QrBitBuffer.prototype = {
   },
 
   putBit: function (bit) {
-    var bufIndex = Math.floor(this.length / 8)
+    const bufIndex = Math.floor(this.length / 8)
     if (this.buffer.length <= bufIndex) {
       this.buffer.push(0)
     }
