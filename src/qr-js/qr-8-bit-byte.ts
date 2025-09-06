@@ -1,6 +1,6 @@
 import { qrModeEnum } from './qr-mode-enum'
 
-function QR8bitByte(data) {
+function QR8bitByte(data: number[]) {
   this.mode = qrModeEnum.MODE_8BIT_BYTE
   this.data = data
 }

@@ -262,12 +262,15 @@ function getRsBlockTable(typeNumber, errorCorrectLevel) {
   }
 }
 
-function QRRSBlock(totalCount, dataCount?) {
+function QRRSBlock(totalCount: number, dataCount?: number) {
   this.totalCount = totalCount
   this.dataCount = dataCount
 }
 
-QRRSBlock.getRSBlocks = function (typeNumber, errorCorrectLevel) {
+QRRSBlock.getRSBlocks = function (
+  typeNumber: number,
+  errorCorrectLevel: number
+) {
   const rsBlock = getRsBlockTable(typeNumber, errorCorrectLevel)
 
   if (rsBlock == undefined) {

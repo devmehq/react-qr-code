@@ -17,12 +17,12 @@ function JsQrCode(typeNumber: any, errorCorrectLevel: any) {
 const proto = JsQrCode.prototype
 
 proto.addData = function (data: any) {
-  var newData = new QR8bitByte(data)
+  const newData = new QR8bitByte(data)
   this.dataList.push(newData)
   this.dataCache = null
 }
 
-proto.isDark = function (row: string | number, col: string | number) {
+proto.isDark = function (row: number, col: number) {
   if (
     row < 0 ||
     this.moduleCount <= row ||
