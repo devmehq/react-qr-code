@@ -1,5 +1,5 @@
 const QRMath = {
-  glog: function (n) {
+  glog: function (n: number) {
     if (n < 1) {
       throw new Error('glog(' + n + ')')
     }
@@ -7,7 +7,7 @@ const QRMath = {
     return QRMath.LOG_TABLE[n]
   },
 
-  gexp: function (n) {
+  gexp: function (n: number) {
     while (n < 0) {
       n += 255
     }
