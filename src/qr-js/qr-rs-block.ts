@@ -284,7 +284,7 @@ QRRSBlock.getRSBlocks = function (
 
   const length = rsBlock.length / 3
 
-  const list: number[] = []
+  const list = []
 
   for (let i = 0; i < length; i++) {
     const count = rsBlock[i * 3]
