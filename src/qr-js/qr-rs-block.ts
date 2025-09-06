@@ -247,7 +247,7 @@ const RS_BLOCK_TABLE = [
   [20, 45, 15, 61, 46, 16],
 ]
 
-function getRsBlockTable(typeNumber, errorCorrectLevel) {
+function getRsBlockTable(typeNumber: number, errorCorrectLevel: number) {
   switch (errorCorrectLevel) {
     case qrErrorCorrectLevel.L:
       return RS_BLOCK_TABLE[(typeNumber - 1) * 4]
@@ -284,7 +284,7 @@ QRRSBlock.getRSBlocks = function (
 
   const length = rsBlock.length / 3
 
-  const list = []
+  const list: number[] = []
 
   for (let i = 0; i < length; i++) {
     const count = rsBlock[i * 3]
