@@ -136,7 +136,7 @@ const QRUtil = {
     return a
   },
 
-  getLengthInBits: function (mode: number, type: string | number) {
+  getLengthInBits: function (mode: number, type: number) {
     if (1 <= type && type < 10) {
       // 1 - 9
 

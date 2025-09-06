@@ -4,7 +4,7 @@ import { QRRSBlock } from './qr-rs-block'
 import { QrBitBuffer } from './qr-bit-buffer'
 import { QRPolynomial } from './qr-polynomial'
 
-function JsQrCode(typeNumber: any, errorCorrectLevel: any) {
+function JsQrCode(typeNumber: number, errorCorrectLevel: number) {
   this.typeNumber = typeNumber
   this.errorCorrectLevel = errorCorrectLevel
   this.modules = null
@@ -17,12 +17,12 @@ function JsQrCode(typeNumber: any, errorCorrectLevel: any) {
 const proto = JsQrCode.prototype
 
 proto.addData = function (data: any) {
-  var newData = new QR8bitByte(data)
+  const newData = new QR8bitByte(data)
   this.dataList.push(newData)
   this.dataCache = null
 }
 
-proto.isDark = function (row: string | number, col: string | number) {
+proto.isDark = function (row: number, col: number) {
   if (
     row < 0 ||
     this.moduleCount <= row ||
